@@ -9,7 +9,8 @@
     <Grid>
         <Button Content="Knap" HorizontalAlignment="Left" Margin="151,126,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Knap" HorizontalAlignment="Left" Margin="315,123,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Knap" HorizontalAlignment="Left" Margin="230,235,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Knap" HorizontalAlignment="Left" Margin="151,225,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Knap" HorizontalAlignment="Left" Margin="315,225,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>
 </Window>
