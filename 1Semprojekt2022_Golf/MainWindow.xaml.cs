@@ -24,5 +24,10 @@ namespace _1Semprojekt2022_Golf
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
