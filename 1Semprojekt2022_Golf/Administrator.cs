@@ -8,7 +8,7 @@ namespace _1Semprojekt2022_Golf
 {
     class Administrator
     {
-        public static void RegisterTime(int idOfRunner) //måske skal tiden føres ind som param, måske ikke
+        public static void RegisterTime(int idOfRunner) //måske skal tiden føres ind som param, måske ikke PRØVER AT LAVE PÅ DENNE
         {
 
         }
