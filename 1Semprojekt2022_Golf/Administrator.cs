@@ -47,6 +47,11 @@ namespace _1Semprojekt2022_Golf
         {
 
         }
+
+        public static void SearchRunner(string runnerName, int idOfRunner)
+        {
+
+        }
     }
 
     
