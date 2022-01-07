@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace _1Semprojekt2022_Golf
 {
@@ -10,7 +12,26 @@ namespace _1Semprojekt2022_Golf
     {
         public static void RegisterTime(int idOfRunner) //måske skal tiden føres ind som param, måske ikke PRØVER AT LAVE PÅ DENNE
         {
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["PLACEHOLDER"].ConnectionString);
+                SqlCommand cmd = new SqlCommand(      );
 
+                connection.Open();
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                if(connection != null)
+                {
+                    connection.Close();
+                }
+            }
         }
 
         public static void MakeNewRunner(string name) //mangler flere params self
