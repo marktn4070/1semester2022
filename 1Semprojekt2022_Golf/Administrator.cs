@@ -16,7 +16,7 @@ namespace _1Semprojekt2022_Golf
             try
             {
                 connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-                SqlCommand cmd = new SqlCommand(      );
+                SqlCommand cmd = new SqlCommand(string.Format(""), connection);
 
                 connection.Open();
 
@@ -34,9 +34,29 @@ namespace _1Semprojekt2022_Golf
             }
         }
 
-        public static void MakeNewRunner(string name) //mangler flere params self
+        public static void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)  
         {
-
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+                SqlCommand cmd = new SqlCommand(
+                    string.Format("INSERT INTO Participant (P_name, P_mail, P_phone, P_address, P_zip, P_city ) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", name, mail, phone, address, zip, city), 
+                    connection);
+                connection.Open();
+                //xaml det lykkedes vindue
+            }
+            catch
+            {
+                //xaml fejl vindue
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
         }
 
         public static void DeleteRunner(int id)
