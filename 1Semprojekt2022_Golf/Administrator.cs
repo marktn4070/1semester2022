@@ -15,7 +15,7 @@ namespace _1Semprojekt2022_Golf
             SqlConnection connection = null;
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["PLACEHOLDER"].ConnectionString);
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(      );
 
                 connection.Open();
