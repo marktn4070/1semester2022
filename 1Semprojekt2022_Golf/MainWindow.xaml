@@ -4,10 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_1Semprojekt2022_Golf"
-        mc:Ignorable="d" Height="600" Width="1080" WindowStartupLocation="CenterScreen">
-    <StackPanel Background="WhiteSmoke">
+        mc:Ignorable="d" Height="600" Width="1080" WindowStartupLocation="CenterScreen" Background="White">
+    <StackPanel>
         <Grid Height="100">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Background="WhiteSmoke">
                 <Button Uid="0" Width="150" Content="Deltager" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
                 <Button Uid="1" Width="150" Content="Løberute" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
                 <Button Uid="2" Width="150" Content="Tidstagning" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
