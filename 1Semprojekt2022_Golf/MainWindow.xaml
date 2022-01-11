@@ -4,16 +4,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_1Semprojekt2022_Golf"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Knap" HorizontalAlignment="Left" Margin="150,131,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Knap" HorizontalAlignment="Left" Margin="315,126,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Knap" HorizontalAlignment="Left" Margin="315,231,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Knap" HorizontalAlignment="Left" Margin="150,236,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Knap" HorizontalAlignment="Left" Margin="230,325,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Knap" HorizontalAlignment="Left" Margin="375,325,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Knap" HorizontalAlignment="Left" Margin="499,131,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        mc:Ignorable="d" Height="600" Width="1080" WindowStartupLocation="CenterScreen">
+    <StackPanel Background="WhiteSmoke">
+        <Grid Height="100">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+                <Button Uid="0" Width="150" Content="Deltager" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
+                <Button Uid="1" Width="150" Content="Løberute" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
+                <Button Uid="2" Width="150" Content="Tidstagning" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
 
-    </Grid>
+            </StackPanel>
+            <Grid x:Name="GridCursor" Width="150" Height="5" Background="Black" HorizontalAlignment="Left" Margin="10 0"/>
+        </Grid>
+
+
+
+        <Grid x:Name="GridMain">
+
+
+
+            <TextBlock  x:Name="Test" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontSize="30"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- ewfbewfhwe -->
+
+
+
+
+    </StackPanel>
 </Window>
