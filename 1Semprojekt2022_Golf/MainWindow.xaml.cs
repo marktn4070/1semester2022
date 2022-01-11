@@ -25,36 +25,38 @@ namespace _1Semprojekt2022_Golf
             InitializeComponent();
         }
 
-            private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int index = int.Parse(((Button)e.Source).Uid);
+
+            GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
+
+            switch (index)
             {
-                int index = int.Parse(((Button)e.Source).Uid);
+                case 0:
+                    Title.Text = "Deltager";
+                    page_deltager.Visibility = Visibility.Visible;
+                    page_tidstagning.Visibility = Visibility.Hidden;
+                    page_løberute.Visibility = Visibility.Hidden;
 
-                GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
+                    break;
 
-                switch (index)
-                {
-                    case 0:
-                        Test.Text = "1";
-                        break;
-                    case 1:
-                        Test.Text = "2";
-                        break;
-                    case 2:
-                        Test.Text = "3";
-                        break;
-                    case 3:
-                        Test.Text = "4";
-                        break;
-                    case 4:
-                        Test.Text = "5";
-                        break;
-                    case 5:
-                        Test.Text = "6";
-                        break;
-                    case 6:
-                        Test.Text = "7";
-                        break;
-                }
+                case 1:
+                    Title.Text = "Løberute";
+                    page_deltager.Visibility = Visibility.Hidden;
+                    page_tidstagning.Visibility = Visibility.Visible;
+                    page_løberute.Visibility = Visibility.Hidden;
+                    break;
+                case 2:
+                    Title.Text = "Tidstagning";
+                    page_deltager.Visibility = Visibility.Hidden;
+                    page_tidstagning.Visibility = Visibility.Hidden;
+                    page_løberute.Visibility = Visibility.Visible;
+                    break;
+
+
+
             }
         }
     }
+}
