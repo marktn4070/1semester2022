@@ -17,14 +17,15 @@ using System.Windows.Shapes;
 namespace _1Semprojekt2022_Golf
 {
     /// <summary>
-    /// Interaction logic for update_runner.xaml
+    /// Interaction logic for Update_runner.xaml
     /// </summary>
-    public partial class update_runner : Window
+    public partial class Update_runner : Window
     {
-        public update_runner()
+        public Update_runner()
         {
             InitializeComponent();
             LoadGrid();
+            this.Closing += new System.ComponentModel.CancelEventHandler(Update_runner_Closing);
         }
 
 
@@ -128,6 +129,11 @@ namespace _1Semprojekt2022_Golf
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        void Update_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow secondWindow = new MainWindow();
+            secondWindow.Show();
         }
     }
 }

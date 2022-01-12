@@ -57,14 +57,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Create_route.xaml.cs">
+      <DependentUpon>Create_route.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Create_runner.xaml.cs">
       <DependentUpon>Create_runner.xaml</DependentUpon>
     </Compile>
     <Compile Include="Route.cs" />
     <Compile Include="Runner.cs" />
-    <Compile Include="update_runner.xaml.cs">
-      <DependentUpon>update_runner.xaml</DependentUpon>
+    <Compile Include="Update_runner.xaml.cs">
+      <DependentUpon>Update_runner.xaml</DependentUpon>
     </Compile>
+    <Page Include="Create_route.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Create_runner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,7 +89,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="update_runner.xaml">
+    <Page Include="Update_runner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
