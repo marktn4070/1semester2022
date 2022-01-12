@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="Create_runner" Height="450" Width="800">
     <Grid>
-        
+        <TextBox Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="15" Margin="145,164,0,0"/>
+        <TextBox Name="Mail" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="15" Margin="205,165,0,0" />
+        <TextBox Name="Phone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="15" Margin="259,166,0,0"/>
+        <TextBox Name="Address" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="15" Margin="313,166,0,0"/>
+        <TextBox Name="Zip" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="15" Margin="364,165,0,0"/>
+        <TextBox Name="City" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="15" Margin="417,164,0,0" />
+
+        <Button Name="Tilfoej_deltager" Content="Tilføj deltager" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,198,0,0" Click="Tilfoej_deltager_Click" />
     </Grid>
 </Window>

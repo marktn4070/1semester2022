@@ -20,6 +20,8 @@ namespace _1Semprojekt2022_Golf
     /// </summary>
     public partial class MainWindow : Window
     {
+        Administrator admin = new Administrator();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -61,7 +63,7 @@ namespace _1Semprojekt2022_Golf
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Create_runner secondWindow = new Create_runner();
+            Create_runner secondWindow = new Create_runner(admin);
             secondWindow.Show();
         }
 

@@ -19,9 +19,16 @@ namespace _1Semprojekt2022_Golf
     /// </summary>
     public partial class Create_runner : Window
     {
-        public Create_runner()
+        public Administrator admin = null;
+        public Create_runner(Administrator admn)
         {
+            admin = admn;
             InitializeComponent();
+        }
+
+        private void Tilfoej_deltager_Click(object sender, RoutedEventArgs e)
+        {
+            admin.MakeNewRunner(Name.Text, Mail.Text, int.Parse(Phone.Text), Address.Text, int.Parse(Zip.Text), City.Text);
         }
     }
 }

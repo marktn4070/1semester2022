@@ -8,7 +8,7 @@ using System.Configuration;
 
 namespace _1Semprojekt2022_Golf
 {
-    class Administrator
+    public class Administrator
     {
         public static void RegisterTime(int idOfRunner) //måske skal tiden føres ind som param, måske ikke PRØVER AT LAVE PÅ DENNE
         {
@@ -34,16 +34,24 @@ namespace _1Semprojekt2022_Golf
             }
         }
 
-        public static void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)  
+        public void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)  
         {
             SqlConnection connection = null;
             try
             {
                 connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Participant (P_name, P_mail, P_phone, P_address, P_zip, P_city ) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", name, mail, phone, address, zip, city), 
+                    string.Format("INSERT INTO Participant (P_name, P_mail, P_phone, P_address, P_zip, P_city ) VALUES(@P_name, @P_mail, @P_phone, @P_address, @P_zip, @P_city)"),
                     connection);
+                cmd.Parameters.Add(CreateParam("@P_name", name, System.Data.SqlDbType.VarChar));
+                cmd.Parameters.Add(CreateParam("@P_mail", mail, System.Data.SqlDbType.VarChar));
+                cmd.Parameters.Add(CreateParam("@P_phone", phone, System.Data.SqlDbType.Int));
+                cmd.Parameters.Add(CreateParam("@P_address", address, System.Data.SqlDbType.VarChar));
+                cmd.Parameters.Add(CreateParam("@P_zip", zip, System.Data.SqlDbType.Int));
+                cmd.Parameters.Add(CreateParam("@P_city", city, System.Data.SqlDbType.VarChar));
                 connection.Open();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
                 //xaml det lykkedes vindue
             }
             catch
@@ -92,6 +100,12 @@ namespace _1Semprojekt2022_Golf
         public static void SearchRunner(string runnerName, int idOfRunner)
         {
 
+        }
+        private static SqlParameter CreateParam(string name, object value, System.Data.SqlDbType type)
+        {
+            SqlParameter param = new SqlParameter(name, type);
+            param.Value = value;
+            return param;
         }
     }
 
