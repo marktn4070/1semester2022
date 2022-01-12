@@ -28,7 +28,14 @@ namespace _1Semprojekt2022_Golf
 
         private void Tilfoej_deltager_Click(object sender, RoutedEventArgs e)
         {
-            admin.MakeNewRunner(Name.Text, Mail.Text, int.Parse(Phone.Text), Address.Text, int.Parse(Zip.Text), City.Text);
+            try
+            {
+                admin.MakeNewRunner(Name.Text, Mail.Text, int.Parse(Phone.Text), Address.Text, int.Parse(Zip.Text), City.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
