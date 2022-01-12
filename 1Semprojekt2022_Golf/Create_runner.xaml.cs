@@ -24,6 +24,7 @@ namespace _1Semprojekt2022_Golf
         {
             admin = admn;
             InitializeComponent();
+            this.Closing += new System.ComponentModel.CancelEventHandler(Create_runner_Closing);
         }
 
         private void Tilfoej_deltager_Click(object sender, RoutedEventArgs e)
@@ -43,6 +44,11 @@ namespace _1Semprojekt2022_Golf
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        void Create_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow secondWindow = new MainWindow();
+            secondWindow.Show();
         }
     }
 }

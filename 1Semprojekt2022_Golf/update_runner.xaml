@@ -1,11 +1,11 @@
-﻿<Window x:Class="_1Semprojekt2022_Golf.update_runner"
+﻿<Window x:Class="_1Semprojekt2022_Golf.Update_runner"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_1Semprojekt2022_Golf"
         mc:Ignorable="d"
-        Title="update_runner" Height="450" Width="800">
+        Title="Update_runner" Height="450" Width="800">
     <Grid>
         <TextBox x:Name="P_name_txt" VerticalAlignment="Top" HorizontalAlignment="Left" Height="23" Width="100" Margin="75,95,0,302"/>
         <TextBox x:Name="P_mail_txt" VerticalAlignment="Top" HorizontalAlignment="Left" Height="23" Width="100" Margin="75,151,0,246"/>
