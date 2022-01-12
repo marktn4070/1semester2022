@@ -13,28 +13,21 @@ namespace _1Semprojekt2022_Golf
         public static void RegisterTime(int idOfRunner) //måske skal tiden føres ind som param, måske ikke PRØVER AT LAVE PÅ DENNE
         {
             SqlConnection connection = null;
-            try
-            {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-                SqlCommand cmd = new SqlCommand(string.Format(""), connection);
+            
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(string.Format(""), connection);
 
-                connection.Open();
+            connection.Open();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.ExecuteNonQuery();
 
-            }
-            catch
+            if (connection != null)
             {
-
-            }
-            finally
-            {
-                if(connection != null)
-                {
-                    connection.Close();
-                }
+            connection.Close();
             }
         }
 
-        public void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)  
+        public void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)  ///James
         {
             SqlConnection connection = null;
           
@@ -56,7 +49,7 @@ namespace _1Semprojekt2022_Golf
             if (connection != null)
             {
             connection.Close();
-            } 
+            }
         }
 
         public static void DeleteRunner(int id)
@@ -69,9 +62,29 @@ namespace _1Semprojekt2022_Golf
 
         }
 
-        public static void AddRoute(string nameOfRoute, int length) //måske flere params
+        public static void AddRoute(string nameOfRoute, int year, int length) //måske flere params
         {
+            SqlConnection connection = null;
 
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(
+            string.Format("INSERT INTO Participant (P_name, P_mail, P_phone, P_address, P_zip, P_city ) VALUES(@P_name, @P_mail, @P_phone, @P_address, @P_zip, @P_city)"),
+            connection);
+            cmd.Parameters.Add(CreateParam("@P_name", name, System.Data.SqlDbType.VarChar));
+            cmd.Parameters.Add(CreateParam("@P_mail", mail, System.Data.SqlDbType.VarChar));
+            cmd.Parameters.Add(CreateParam("@P_phone", phone, System.Data.SqlDbType.Int));
+            cmd.Parameters.Add(CreateParam("@P_address", address, System.Data.SqlDbType.VarChar));
+            cmd.Parameters.Add(CreateParam("@P_zip", zip, System.Data.SqlDbType.Int));
+            cmd.Parameters.Add(CreateParam("@P_city", city, System.Data.SqlDbType.VarChar));
+            connection.Open();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.ExecuteNonQuery();
+            //xaml det lykkedes vindue
+
+            if (connection != null)
+            {
+                connection.Close();
+            }
         }
 
         public static void DeleteRoute(string nameOfRoute)
