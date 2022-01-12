@@ -31,6 +31,13 @@ namespace _1Semprojekt2022_Golf
             try
             {
                 admin.MakeNewRunner(Name.Text, Mail.Text, int.Parse(Phone.Text), Address.Text, int.Parse(Zip.Text), City.Text);
+                MessageBox.Show("Løber gemt"); //måske behøver vi ikke dette......
+                Name.Clear();
+                Mail.Clear();
+                Phone.Clear();
+                Address.Clear();
+                Zip.Clear();
+                City.Clear();
             }
             catch (Exception ex)
             {
