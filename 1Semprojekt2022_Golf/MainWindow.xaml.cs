@@ -63,14 +63,49 @@ namespace _1Semprojekt2022_Golf
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            this.Closing += new System.ComponentModel.CancelEventHandler(Create_runner_open);
+            this.Close();
+        }
+
+        void Create_runner_open(object sender, System.ComponentModel.CancelEventArgs e)
+        {
             Create_runner secondWindow = new Create_runner(admin);
             secondWindow.Show();
         }
 
+
+
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            update_runner secondWindow = new update_runner();
+            this.Closing += new System.ComponentModel.CancelEventHandler(Create_route_open);
+            this.Close();
+        }
+
+        void Create_route_open(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Create_route secondWindow = new Create_route();
             secondWindow.Show();
         }
+
+
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.Closing += new System.ComponentModel.CancelEventHandler(Update_runner_open);
+            this.Close();
+        }
+
+        void Update_runner_open(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Update_runner secondWindow = new Update_runner();
+            secondWindow.Show();
+        }
+
+
+
+
+
+
+
     }
 }

@@ -25,28 +25,29 @@
 
 
 
-            <Grid x:Name="page_løberute" Height="500" Width="1080"  Background="White">
+            <Grid x:Name="page_løberute" Height="500" Width="1080"  Background="White" d:IsHidden="True">
 
-                <Button Width="50" Height="50" Content="Button" Margin="221,248,809,202"/>
+                <Button Width="50" Height="50" Content="Button" Margin="139,29,891,421" Click="Button_Click_3"/>
 
             </Grid>
 
 
-            <Grid x:Name="page_tidstagning" Height="500" Width="1080"  Background="White">
-                <Button Width="50" Height="50" Content="Button" Margin="397,286,633,164" Click="Button_Click_2"/>
+            <Grid x:Name="page_tidstagning" Height="500" Width="1080"  Background="White" d:IsHidden="True">
+                <Button Width="50" Height="50" Content="Button" Margin="67,32,963,418" Click="Button_Click_2"/>
 
         </Grid>
 
 
         <Grid x:Name="page_deltager" Height="500" Width="1080" Background="White">
-            <Button Width="50" Height="50" Content="Opret Deltager" Margin="864,189,166,261" RenderTransformOrigin="0.504,0.504" Click="Button_Click_1"/>
+            <Button Width="50" Height="50" Content="Opret Deltager" Margin="45,34,985,416" RenderTransformOrigin="0.504,0.504" Click="Button_Click_1"/>
 
         </Grid>
 
 
+            <DataGrid x:Name="daragrid"  HorizontalAlignment="Left" Width="552" Height="200" Margin="303,139,0,161" />
 
 
-        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Deltager" VerticalAlignment="Top" FontSize="30"/>
+            <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Deltager" VerticalAlignment="Top" FontSize="30"/>
         </Grid>
 
 

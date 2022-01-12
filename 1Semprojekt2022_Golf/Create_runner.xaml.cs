@@ -24,11 +24,17 @@ namespace _1Semprojekt2022_Golf
         {
             admin = admn;
             InitializeComponent();
+            this.Closing += new System.ComponentModel.CancelEventHandler(Create_runner_Closing);
         }
 
         private void Tilfoej_deltager_Click(object sender, RoutedEventArgs e)
         {
             admin.MakeNewRunner(Name.Text, Mail.Text, int.Parse(Phone.Text), Address.Text, int.Parse(Zip.Text), City.Text);
+        }
+        void Create_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow secondWindow = new MainWindow();
+            secondWindow.Show();
         }
     }
 }
