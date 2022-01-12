@@ -62,20 +62,17 @@ namespace _1Semprojekt2022_Golf
 
         }
 
-        public static void AddRoute(string nameOfRoute, int year, int length) //måske flere params
+        public static void AddRoute(string nameOfRoute, int year, TimeSpan startTime, int length) //måske ikke timespan datatype...
         {
             SqlConnection connection = null;
 
             connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
             SqlCommand cmd = new SqlCommand(
-            string.Format("INSERT INTO Participant (P_name, P_mail, P_phone, P_address, P_zip, P_city ) VALUES(@P_name, @P_mail, @P_phone, @P_address, @P_zip, @P_city)"),
+            string.Format("INSERT INTO Route (R_name, R_year, R_starttime, R_distance) VALUES(@R_name, @R_year, @R_starttime, @R_distance)"),
             connection);
-            cmd.Parameters.Add(CreateParam("@P_name", name, System.Data.SqlDbType.VarChar));
-            cmd.Parameters.Add(CreateParam("@P_mail", mail, System.Data.SqlDbType.VarChar));
-            cmd.Parameters.Add(CreateParam("@P_phone", phone, System.Data.SqlDbType.Int));
-            cmd.Parameters.Add(CreateParam("@P_address", address, System.Data.SqlDbType.VarChar));
-            cmd.Parameters.Add(CreateParam("@P_zip", zip, System.Data.SqlDbType.Int));
-            cmd.Parameters.Add(CreateParam("@P_city", city, System.Data.SqlDbType.VarChar));
+            cmd.Parameters.Add(CreateParam("@P_name", nameOfRoute, System.Data.SqlDbType.VarChar));
+            cmd.Parameters.Add(CreateParam("@P_mail", year, System.Data.SqlDbType.Int));
+            
             connection.Open();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.ExecuteNonQuery();
