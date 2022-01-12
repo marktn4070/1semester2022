@@ -64,5 +64,11 @@ namespace _1Semprojekt2022_Golf
             Create_runner secondWindow = new Create_runner();
             secondWindow.Show();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            update_runner secondWindow = new update_runner();
+            secondWindow.Show();
+        }
     }
 }

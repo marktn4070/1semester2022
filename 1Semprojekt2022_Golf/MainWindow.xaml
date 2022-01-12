@@ -25,15 +25,15 @@
 
 
 
-            <Grid x:Name="page_løberute" Height="500" Width="1080"  Background="White" d:IsHidden="True">
+            <Grid x:Name="page_løberute" Height="500" Width="1080"  Background="White">
 
                 <Button Width="50" Height="50" Content="Button" Margin="221,248,809,202"/>
 
             </Grid>
 
 
-            <Grid x:Name="page_tidstagning" Height="500" Width="1080"  Background="White" d:IsHidden="True">
-            <Button Width="50" Height="50" Content="Button" Margin="397,286,633,164"/>
+            <Grid x:Name="page_tidstagning" Height="500" Width="1080"  Background="White">
+                <Button Width="50" Height="50" Content="Button" Margin="397,286,633,164" Click="Button_Click_2"/>
 
         </Grid>
 
