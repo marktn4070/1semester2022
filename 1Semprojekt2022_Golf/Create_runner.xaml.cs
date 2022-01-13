@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -24,6 +26,7 @@ namespace _1Semprojekt2022_Golf
         {
             admin = admn;
             InitializeComponent();
+            LoadGrid_Runner();
             this.Closing += new System.ComponentModel.CancelEventHandler(Create_runner_Closing);
         }
 
@@ -33,6 +36,7 @@ namespace _1Semprojekt2022_Golf
             {
                 admin.MakeNewRunner(Name.Text, Mail.Text, int.Parse(Phone.Text), Address.Text, int.Parse(Zip.Text), City.Text);
                 MessageBox.Show("Løber gemt"); //måske behøver vi ikke dette......
+                LoadGrid_Runner();
                 Name.Clear();
                 Mail.Clear();
                 Phone.Clear();
@@ -49,6 +53,27 @@ namespace _1Semprojekt2022_Golf
         {
             MainWindow secondWindow = new MainWindow();
             secondWindow.Show();
+        }
+        public void LoadGrid_Runner()
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            con.Close();
+            daragrid.ItemsSource = dt.DefaultView;
+
+
+
+
+
+            //admin.ShowRunner();
+
+            //daragrid.ItemsSource = dt.DefaultView;
+
         }
     }
 }
