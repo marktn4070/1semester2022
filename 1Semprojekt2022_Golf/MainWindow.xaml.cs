@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -25,8 +26,46 @@ namespace _1Semprojekt2022_Golf
         public MainWindow()
         {
             InitializeComponent();
+            LoadGrid_Runner();
+            LoadGrid_Route();
+            LoadGrid_Time();
         }
 
+        SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+
+        public void LoadGrid_Runner()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            con.Close();
+            daragrid_deltager.ItemsSource = dt.DefaultView;
+
+        }
+        public void LoadGrid_Time()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Registered", con);
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            con.Close();
+            daragrid_tidstagning.ItemsSource = dt.DefaultView;
+        }
+
+        public void LoadGrid_Route()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Route", con);
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            con.Close();
+            daragrid_løberute.ItemsSource = dt.DefaultView;
+
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
@@ -40,7 +79,6 @@ namespace _1Semprojekt2022_Golf
                     page_deltager.Visibility = Visibility.Visible;
                     page_tidstagning.Visibility = Visibility.Hidden;
                     page_løberute.Visibility = Visibility.Hidden;
-
                     break;
 
                 case 1:
@@ -55,9 +93,6 @@ namespace _1Semprojekt2022_Golf
                     page_tidstagning.Visibility = Visibility.Hidden;
                     page_løberute.Visibility = Visibility.Visible;
                     break;
-
-
-
             }
         }
 
@@ -74,7 +109,6 @@ namespace _1Semprojekt2022_Golf
         }
 
 
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             this.Closing += new System.ComponentModel.CancelEventHandler(Create_route_open);
@@ -86,7 +120,6 @@ namespace _1Semprojekt2022_Golf
             Create_route secondWindow = new Create_route();
             secondWindow.Show();
         }
-
 
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -101,11 +134,19 @@ namespace _1Semprojekt2022_Golf
             secondWindow.Show();
         }
 
+        private void Button_Click_test(object sender, RoutedEventArgs e)
+        {
+            test_grid.Visibility = Visibility.Visible;
+            Button_test.Visibility = Visibility.Hidden;
+            Button_test_reset.Visibility = Visibility.Visible;
 
+        }
+        private void Button_Click_test_Reset(object sender, RoutedEventArgs e)
+        {
+            test_grid.Visibility = Visibility.Hidden;
+            Button_test.Visibility = Visibility.Visible;
+            Button_test_reset.Visibility = Visibility.Hidden;
 
-
-
-
-
+        }
     }
 }

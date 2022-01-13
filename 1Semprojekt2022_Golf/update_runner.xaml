@@ -5,26 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_1Semprojekt2022_Golf"
         mc:Ignorable="d"
-        Title="Update_runner" Height="450" Width="800">
+        Title="Update_runner" Height="500" Width="800">
     <Grid>
-        <TextBox x:Name="P_name_txt" VerticalAlignment="Top" HorizontalAlignment="Left" Height="23" Width="100" Margin="75,95,0,302"/>
-        <TextBox x:Name="P_mail_txt" VerticalAlignment="Top" HorizontalAlignment="Left" Height="23" Width="100" Margin="75,151,0,246"/>
-        <TextBox x:Name="P_phone_txt" VerticalAlignment="Top" HorizontalAlignment="Left" Height="23" Width="100" Margin="75,204,0,193"/>
-        <TextBox x:Name="P_adress_txt" HorizontalAlignment="Left" Height="23" Width="100" Margin="75,259,0,138"/>
-        <TextBox x:Name="P_zip_txt" VerticalAlignment="Top" HorizontalAlignment="Left" Height="23" Width="100" Margin="75,315,0,0"/>
-        <TextBox x:Name="P_city_txt" HorizontalAlignment="Left" Height="23" Width="100" Margin="75,371,0,26"/>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-        <Label Content="E-mail" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-        <Label Content="Telefon nr." HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-        <Label Content="Addresse" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top" Height="30" Width="60"/>
-        <Label Content="Post nr." HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-        <Label Content="By" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" Height="30" Width="60"/>
-        <Button Content="Create" x:Name="CreateBtn" HorizontalAlignment="Left" Margin="213,342,0,0" VerticalAlignment="Top" Width="75" Click="CreateBtn_Click"/>
-        <Button Content="Update" x:Name="UpdateBtn" HorizontalAlignment="Left" Margin="323,342,0,0" VerticalAlignment="Top" Width="75" Click="UpdateBtn_Click"/>
-        <Button Content="Delete" x:Name="DeleteBtn" HorizontalAlignment="Left" Margin="435,342,0,0" VerticalAlignment="Top" Width="75" Click="DeleteBtn_Click"/>
-        <Button Content="Clear" x:Name="ClearDataBtn" HorizontalAlignment="Left" Margin="550,342,0,0" VerticalAlignment="Top" Width="75" Click="ClearDataBtn_Click"/>
+        <TextBox x:Name="P_name_txt" Height="23" Width="100" Margin="75,95,0,302" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="P_mail_txt" Height="23" Width="100" Margin="75,151,0,246" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="P_phone_txt" Height="23" Width="100" Margin="75,204,0,193" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="P_address_txt" Height="23" Width="100" Margin="75,259,0,138" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="P_zip_txt" Height="23" Width="100" Margin="75,315,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="P_city_txt" Height="23" Width="100" Margin="75,371,0,26" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Name" Margin="10,95,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="E-mail" Margin="10,151,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Telefon nr." Margin="10,204,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Addresse" Margin="10,259,0,0" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Post nr." Margin="10,315,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="By" Margin="10,370,0,0" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Create" x:Name="CreateBtn" Margin="209,324,0,0" Width="70" Height="70" Click="CreateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Update" x:Name="UpdateBtn" Margin="319,324,0,0" Width="70" Height="70" Click="UpdateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Delete" x:Name="DeleteBtn" Margin="431,324,0,0" Width="70" Height="70" Click="DeleteBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Clear" x:Name="ClearDataBtn" Margin="546,324,0,0" Width="70" Height="70" Click="ClearDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Search" x:Name="SearchDataBtn" Margin="658,324,0,0" Width="70" Height="70" Click="SearchDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-        <DataGrid x:Name="daragrid"  HorizontalAlignment="Left" Width="552" Height="200" Margin="209,95,0,125" />
+        <DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="Search_txt" Height="23" Width="100" Margin="207,428,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Id" Margin="183,424,0,0" Height="27" Width="22" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
     </Grid>
 </Window>
