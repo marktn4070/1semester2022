@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace _1Semprojekt2022_Golf
 {
@@ -32,6 +33,19 @@ namespace _1Semprojekt2022_Golf
                     connection.Close();
                 }
             }
+        }
+
+        public static void ShowRunner()
+        {
+            SqlConnection connection = null;
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Participant"), connection);
+            DataTable dt = new DataTable();
+            connection.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            connection.Close();
+
         }
 
         public void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)  
