@@ -117,7 +117,7 @@ namespace _1Semprojekt2022_Golf
 
         void Create_route_open(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Create_route secondWindow = new Create_route();
+            Create_route secondWindow = new Create_route(admin);
             secondWindow.Show();
         }
 

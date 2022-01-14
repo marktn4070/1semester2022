@@ -22,9 +22,11 @@ namespace _1Semprojekt2022_Golf
     /// </summary>
     public partial class Create_route : Window
     {
-        private List<Zipcode> list = new List<Zipcode>();
-        public Create_route()
+        private List<Route> list = new List<Route>();
+        private Administrator admin;
+        public Create_route(Administrator amn)
         {
+            admin = amn;
             InitializeComponent();
             //
             LoadGrid_Runner("", "", "", "", "");
@@ -36,7 +38,7 @@ namespace _1Semprojekt2022_Golf
 
         private void Refresh()
         {
-            daragrid.ItemsSource = new ObservableCollection<Zipcode>(list);
+            daragrid.ItemsSource = new ObservableCollection<Route>(list);
         }
 
         void Create_route_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -116,14 +118,7 @@ namespace _1Semprojekt2022_Golf
             param.Value = value;
             return param;
         }
-        private class Zipcode
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public string Year { get; set; }
-            public string Starttime { get; set; }
-            public string Distance { get; set; }
-        }
+      
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int n = daragrid.SelectedIndex;
@@ -168,22 +163,7 @@ namespace _1Semprojekt2022_Golf
         }
         public bool IsValid()
         {
-            if (R_name_txt.Text == string.Empty)
-            {
-                MessageBox.Show("En eller flere felter er ikke udfyldt", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            if (R_year_txt.Text == string.Empty)
-            {
-                MessageBox.Show("En eller flere felter er ikke udfyldt", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            if (R_starttime_txt.Text == string.Empty)
-            {
-                MessageBox.Show("En eller flere felter er ikke udfyldt", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            if (R_distance_txt.Text == string.Empty)
+            if (R_name_txt.Text == string.Empty || R_year_txt.Text == string.Empty || R_starttime_txt.Text == string.Empty || R_distance_txt.Text == string.Empty)
             {
                 MessageBox.Show("En eller flere felter er ikke udfyldt", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;

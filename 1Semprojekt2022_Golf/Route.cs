@@ -8,12 +8,10 @@ namespace _1Semprojekt2022_Golf
 {
     class Route
     {
-        public int Length { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public Route(int length, string name)//måske flere params? 
-        {
-            Length = length;
-            Name = name;
-        }
+        public string Year { get; set; }
+        public string Starttime { get; set; }
+        public string Distance { get; set; }
     }
 }
