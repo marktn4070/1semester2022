@@ -89,7 +89,10 @@ namespace _1Semprojekt2022_Golf
         {
 
         }
-
+        public static class LastIndex
+        {
+            public static int foo;
+        }
         public static void UpdateRunner(int id) //mangler flere params...
         {
 

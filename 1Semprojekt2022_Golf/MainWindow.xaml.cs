@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static _1Semprojekt2022_Golf.Administrator;
 
 namespace _1Semprojekt2022_Golf
 {
@@ -29,8 +30,9 @@ namespace _1Semprojekt2022_Golf
             LoadGrid_Runner();
             LoadGrid_Route();
             LoadGrid_Time();
-        }
+            Changed_index();
 
+        }
         SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
 
         public void LoadGrid_Runner()
@@ -46,7 +48,7 @@ namespace _1Semprojekt2022_Golf
         }
         public void LoadGrid_Time()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Registered", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Route", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -57,7 +59,7 @@ namespace _1Semprojekt2022_Golf
 
         public void LoadGrid_Route()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Route", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Registered", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -66,12 +68,12 @@ namespace _1Semprojekt2022_Golf
             daragrid_løberute.ItemsSource = dt.DefaultView;
 
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        public void Changed_index()
         {
-            int index = int.Parse(((Button)e.Source).Uid);
+            int index = LastIndex.foo;
 
-            GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
-
+            GridCursor.Margin = new Thickness(150 * index, 0, 0, 0);
             switch (index)
             {
                 case 0:
@@ -92,6 +94,39 @@ namespace _1Semprojekt2022_Golf
                     page_deltager.Visibility = Visibility.Hidden;
                     page_tidstagning.Visibility = Visibility.Hidden;
                     page_løberute.Visibility = Visibility.Visible;
+                    break;
+            }
+
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int index = int.Parse(((Button)e.Source).Uid);
+
+            GridCursor.Margin = new Thickness(150 * index, 0, 0, 0);
+
+            switch (index)
+            {
+                case 0:
+                    Title.Text = "Deltager";
+                    page_deltager.Visibility = Visibility.Visible;
+                    page_tidstagning.Visibility = Visibility.Hidden;
+                    page_løberute.Visibility = Visibility.Hidden;
+                    LastIndex.foo = index;
+                    break;
+
+                case 1:
+                    Title.Text = "Løberute";
+                    page_deltager.Visibility = Visibility.Hidden;
+                    page_tidstagning.Visibility = Visibility.Visible;
+                    page_løberute.Visibility = Visibility.Hidden;
+                    LastIndex.foo = index;
+                    break;
+                case 2:
+                    Title.Text = "Tidstagning";
+                    page_deltager.Visibility = Visibility.Hidden;
+                    page_tidstagning.Visibility = Visibility.Hidden;
+                    page_løberute.Visibility = Visibility.Visible;
+                    LastIndex.foo = index;
                     break;
             }
         }
