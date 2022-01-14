@@ -26,8 +26,7 @@ namespace _1Semprojekt2022_Golf
         public Create_route()
         {
             InitializeComponent();
-            //
-            LoadGrid_Runner("", "", "", "", "");
+            LoadGrid_Runner("", "", "", "");
             this.Closing += new System.ComponentModel.CancelEventHandler(Create_route_Closing);
         }
 
@@ -54,36 +53,51 @@ namespace _1Semprojekt2022_Golf
             R_starttime_txt.Clear();
             R_distance_txt.Clear();
         }
-        public void LoadGrid_Runner(string txt__Id, string txt__Name, string txt__Year, string txt__Starttime, string txt__Distance)
+        public void LoadGrid_Runner(string R_name_txt, string R_year_txt, string R_starttime_txt, string R_distance_txt)
         {
-            string error = "";
             SqlConnection con = null;
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Route WHERE ID LIKE @R_id AND Name LIKE @R_name AND Year LIKE @R_year AND Starttime LIKE @R_starttime AND Distance LIKE @R_distance", con);
-                cmd.Parameters.Add(CreateParam("@R_id", txt__Id + "%", SqlDbType.Int));
-                cmd.Parameters.Add(CreateParam("@R_name", txt__Name + "%", SqlDbType.NVarChar));
-                cmd.Parameters.Add(CreateParam("@R_year", txt__Year + "%", SqlDbType.Int));
-                cmd.Parameters.Add(CreateParam("@R_starttime", txt__Starttime + "%", SqlDbType.SmallDateTime));
-                cmd.Parameters.Add(CreateParam("@R_distance", txt__Distance + "%", SqlDbType.Int));
+                //int n = daragrid.SelectedIndex;
+                //string tteeeeest_id = list[daragrid.SelectedIndex].Id;
+                //cmd.Parameters.Add(CreateParam("@R_id", tteeeeest_id + "%", SqlDbType.Int));
+                cmd.Parameters.Add(CreateParam("@R_name", R_name_txt + "%", SqlDbType.NVarChar));
+                cmd.Parameters.Add(CreateParam("@R_year", R_year_txt + "%", SqlDbType.Int));
+                cmd.Parameters.Add(CreateParam("@R_starttime", R_starttime_txt + "%", SqlDbType.SmallDateTime));
+                cmd.Parameters.Add(CreateParam("@R_distance", R_distance_txt + "%", SqlDbType.Int));
                 con.Open();
-                if (cmd.ExecuteNonQuery() == 1)
-                {
-                    clearData();
-                    return;
-                }
-                error = "Illegal database operation";
+                SqlDataReader reader = cmd.ExecuteReader();
+                list.Clear();
+                while (reader.Read()) list.Add(new Zipcode { Id = (int)reader[0], Name = reader[1].ToString(), Year = (int)reader[2], Starttime = reader[3].ToString(), Distance = (int)reader[4] });
+                Refresh();
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 if (con != null) con.Close();
             }
-            MessageBox.Show(error);
         }
+        //        if (cmd.ExecuteNonQuery() == 1)
+        //        {
+        //            clearData();
+        //            return;
+        //        }
+        //        error = "Illegal database operation";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        error = ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (con != null) con.Close();
+        //    }
+        //    MessageBox.Show(error);
+        //}
 
 
         //SqlDataReader reader = cmd.ExecuteReader();
@@ -120,9 +134,9 @@ namespace _1Semprojekt2022_Golf
         {
             public int Id { get; set; }
             public string Name { get; set; }
-            public string Year { get; set; }
+            public int Year { get; set; }
             public string Starttime { get; set; }
-            public string Distance { get; set; }
+            public int Distance { get; set; }
         }
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -130,9 +144,9 @@ namespace _1Semprojekt2022_Golf
             if (n >= 0)
             {
                 R_name_txt.Text = list[n].Name;
-                R_year_txt.Text = list[n].Year;
+                R_year_txt.Text = list[n].Year.ToString();
                 R_starttime_txt.Text = list[n].Starttime;
-                R_distance_txt.Text = list[n].Distance;
+                R_distance_txt.Text = list[n].Distance.ToString();
 
 
             }
@@ -208,13 +222,12 @@ namespace _1Semprojekt2022_Golf
                     cmd.Parameters.Add("@R_year", SqlDbType.Int).Value = R_year_txt.Text;
                     cmd.Parameters.Add("@R_starttime", SqlDbType.SmallDateTime).Value = R_starttime_txt.Text;
                     cmd.Parameters.Add("@R_distance", SqlDbType.Decimal).Value = R_distance_txt.Text;
-                    string R_name = R_name_txt.Text;
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
 
                     Refresh();
-                    MessageBox.Show("'" + R_name + "' er nu oprettet", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("'" + R_name_txt.Text + "' er nu oprettet", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
                     clearData();
                 }
                 else

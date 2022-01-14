@@ -70,7 +70,7 @@ namespace _1Semprojekt2022_Golf
         {
             int index = int.Parse(((Button)e.Source).Uid);
 
-            GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
+            GridCursor.Margin = new Thickness((150 * index), 0, 0, 0);
 
             switch (index)
             {
