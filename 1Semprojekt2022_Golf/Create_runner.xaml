@@ -22,6 +22,7 @@
 
         <Button Name="Tilfoej_deltager" Content="Tilføj deltager"  Margin="209,324,0,0" Width="70" Height="70"  VerticalAlignment="Top" HorizontalAlignment="Left" Click="Tilfoej_deltager_Click" />
 
-        <DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <!--<DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
+        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret Deltager" VerticalAlignment="Top" FontSize="30"/>
     </Grid>
 </Window>

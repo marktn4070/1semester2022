@@ -134,6 +134,16 @@ namespace _1Semprojekt2022_Golf
             secondWindow.Show();
         }
 
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            this.Closing += new System.ComponentModel.CancelEventHandler(Test_runner_open);
+            this.Close();
 
+        }
+        void Test_runner_open(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Popup_tes_window secondWindow = new Popup_tes_window();
+            secondWindow.Show();
+        }
     }
 }

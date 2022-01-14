@@ -1,0 +1,59 @@
+﻿<Window x:Class="_1Semprojekt2022_Golf.Popup_tes_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_1Semprojekt2022_Golf"
+        mc:Ignorable="d"
+        Title="Popup_tes_window" Height="450" Width="800">
+    <Grid>
+        <!--<TextBox Name="Id" Height="23" Width="100" Margin="75,95,0,302" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox Name="Name" Height="23" Width="100" Margin="75,151,0,246" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox Name="Mail" Height="23" Width="100" Margin="75,151,0,246" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox Name="Phone" Height="23" Width="100" Margin="75,204,0,193" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox Name="Address" Height="23" Width="100" Margin="75,259,0,138" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox Name="Zip" Height="23" Width="100" Margin="75,315,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox Name="City" Height="23" Width="100" Margin="75,371,0,26" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Name" Margin="10,95,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="E-mail" Margin="10,151,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Telefon nr." Margin="10,204,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Addresse" Margin="10,259,0,0" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Post nr." Margin="10,315,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="By" Margin="10,370,0,0" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <Button Name="Tilfoej_deltager" Content="Tilføj deltager"  Margin="209,324,0,0" Width="70" Height="70"  VerticalAlignment="Top" HorizontalAlignment="Left" Click="Tilfoej_deltager_Click" />
+
+        --><!--<DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left"/>--><!--
+
+
+        <DataGrid Name="grid" Grid.Row="3" Grid.ColumnSpan="4" AutoGenerateColumns="False" CanUserAddRows="False"
+                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="80" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Width="80" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Mail" Width="80" Binding="{Binding Mail}"/>
+                <DataGridTextColumn Header="Phone" Width="80" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="Address" Width="80" Binding="{Binding Address}"/>
+                <DataGridTextColumn Header="Zip" Width="80" Binding="{Binding Zip}"/>
+                <DataGridTextColumn Header="City" Width="80" Binding="{Binding City}"/>
+                <DataGridTemplateColumn Header="View">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnView" Content="Update" Click="btnView_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="View2">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnDelete" Content="Delete" Click="btnDelete_Click_2" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>-->
+
+
+    </Grid>
+</Window>

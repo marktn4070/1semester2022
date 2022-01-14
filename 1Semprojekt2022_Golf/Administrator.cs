@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
-using System.Data;
 
 namespace _1Semprojekt2022_Golf
 {
@@ -28,30 +27,42 @@ namespace _1Semprojekt2022_Golf
             }
             finally
             {
-                if(connection != null)
+                if (connection != null)
                 {
                     connection.Close();
                 }
             }
         }
 
-        public static void ShowRunner()
+
+        //private static void Print(SqlDataReader reader)
+        //{
+        //    Console.WriteLine();
+        //    while (reader.Read())
+        //    {
+        //        Console.WriteLine("{0} {1}", reader["Code"], reader["City"]);
+        //        Console.WriteLine();
+        //    }
+        //}
+        //public static void ShowRunner()
+        //{
+        //    SqlConnection connection = null;
+        //    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["post"].ConnectionString);
+        //    SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Participant"), connection);
+        //    DataTable dt = new DataTable();
+        //    connection.Open();
+        //    SqlDataReader sdr = cmd.ExecuteReader();
+        //    dt.Load(sdr);
+        //    Print(sdr);
+        //    connection.Close();
+
+
+        //}
+
+        public void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)
         {
             SqlConnection connection = null;
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-            SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Participant"), connection);
-            DataTable dt = new DataTable();
-            connection.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dt.Load(sdr);
-            connection.Close();
 
-        }
-
-        public void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)  
-        {
-            SqlConnection connection = null;
-          
             connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
             SqlCommand cmd = new SqlCommand(
             string.Format("INSERT INTO Participant (P_name, P_mail, P_phone, P_address, P_zip, P_city ) VALUES(@P_name, @P_mail, @P_phone, @P_address, @P_zip, @P_city)"),
@@ -66,11 +77,11 @@ namespace _1Semprojekt2022_Golf
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.ExecuteNonQuery();
             //xaml det lykkedes vindue
-            
+
             if (connection != null)
             {
-            connection.Close();
-            } 
+                connection.Close();
+            }
         }
 
         public static void DeleteRunner(int id)
@@ -115,5 +126,5 @@ namespace _1Semprojekt2022_Golf
         }
     }
 
-    
+
 }

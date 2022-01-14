@@ -3,10 +3,44 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:_1Semprojekt2022_Golf"
         mc:Ignorable="d"
-        Title="Create_route" Height="450" Width="800">
+        Title="Opret Løb" Height="500" Width="800">
     <Grid>
+        <TextBox x:Name="R_name_txt" Height="23" Width="100" Margin="10,123,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="R_year_txt" Height="23" Width="100" Margin="10,270,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="R_starttime_txt" Height="23" Width="100" Margin="10,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="R_distance_txt" Height="23" Width="100" Margin="10,343,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Name" Margin="10,97,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="År" Margin="10,245,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Starttid" Margin="10,171,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Længde" Margin="10,318,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Create" x:Name="CreateBtn" Margin="209,324,0,0" Width="70" Height="70" Click="CreateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Update" x:Name="UpdateBtn" Margin="319,324,0,0" Width="70" Height="70" Click="UpdateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Delete" x:Name="DeleteBtn" Margin="431,324,0,0" Width="70" Height="70" Click="DeleteBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Clear" x:Name="ClearDataBtn" Margin="546,324,0,0" Width="70" Height="70" Click="ClearDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Search" x:Name="SearchDataBtn" Margin="658,324,0,0" Width="70" Height="70" Click="SearchDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <TextBox x:Name="Search_txt" Height="23" Width="100" Margin="207,428,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Id" Margin="183,424,0,0" Height="27" Width="22" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret Løb" VerticalAlignment="Top" FontSize="30"/>
+
+        <TextBlock Text="" x:Name="R_distance_error"  Margin="10,366,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Text="" x:Name="R_starttime_error"  Margin="10,219,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Text="" x:Name="R_year__error"  Margin="10,293,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Text="" x:Name="R_navn_error"  Margin="10,146,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         
+        <DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="6" Grid.ColumnSpan="4" AutoGenerateColumns="False" CanUserAddRows="False"
+                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged" MouseDoubleClick="grid_MouseDoubleClick" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="80" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Year" Width="*" Binding="{Binding Year}"/>
+                <DataGridTextColumn Header="Starttime" Width="*" Binding="{Binding Starttime}"/>
+                <DataGridTextColumn Header="Distance" Width="*" Binding="{Binding Distance}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

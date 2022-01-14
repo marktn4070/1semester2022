@@ -58,6 +58,7 @@
                 <Label Content="Post nr." Margin="10,253,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <Label Content="By" Margin="10,308,0,0" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 </Grid>
+                <Button Content="Test" Margin="125,56,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Test_Click"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
             </Grid>
 
 
