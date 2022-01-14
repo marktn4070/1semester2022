@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static _1Semprojekt2022_Golf.Administrator;
 
 namespace _1Semprojekt2022_Golf
 {
@@ -38,7 +39,7 @@ namespace _1Semprojekt2022_Golf
             daragrid.ItemsSource = new ObservableCollection<Zipcode>(list);
         }
 
-        void Create_route_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+         void Create_route_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow secondWindow = new MainWindow();
             secondWindow.Show();
@@ -58,7 +59,7 @@ namespace _1Semprojekt2022_Golf
             SqlConnection con = null;
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Route WHERE ID LIKE @R_id AND Name LIKE @R_name AND Year LIKE @R_year AND Starttime LIKE @R_starttime AND Distance LIKE @R_distance", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Route WHERE Id LIKE @R_id AND Name LIKE @R_name AND Year LIKE @R_year AND Starttime LIKE @R_starttime AND Distance LIKE @R_distance", con);
                 //int n = daragrid.SelectedIndex;
                 //string tteeeeest_id = list[daragrid.SelectedIndex].Id;
                 //cmd.Parameters.Add(CreateParam("@R_id", tteeeeest_id + "%", SqlDbType.Int));
