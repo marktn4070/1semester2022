@@ -13,15 +13,15 @@ namespace _1Semprojekt2022_Golf
         public static void RegisterTime(int idOfRunner) //måske skal tiden føres ind som param, måske ikke PRØVER AT LAVE PÅ DENNE
         {
             SqlConnection connection = null;
-            try
-            {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-                SqlCommand cmd = new SqlCommand(string.Format(""), connection);
+            
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(string.Format(""), connection);
 
-                connection.Open();
+            connection.Open();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.ExecuteNonQuery();
 
-            }
-            catch
+            if (connection != null)
             {
 
             }
@@ -94,9 +94,26 @@ namespace _1Semprojekt2022_Golf
 
         }
 
-        public static void AddRoute(string nameOfRoute, int length) //måske flere params
+        public static void AddRoute(string nameOfRoute, int year, TimeSpan startTime, int length) //måske ikke timespan datatype...
         {
+            SqlConnection connection = null;
 
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(
+            string.Format("INSERT INTO Route (R_name, R_year, R_starttime, R_distance) VALUES(@R_name, @R_year, @R_starttime, @R_distance)"),
+            connection);
+            cmd.Parameters.Add(CreateParam("@P_name", nameOfRoute, System.Data.SqlDbType.VarChar));
+            cmd.Parameters.Add(CreateParam("@P_mail", year, System.Data.SqlDbType.Int));
+            
+            connection.Open();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.ExecuteNonQuery();
+            //xaml det lykkedes vindue
+
+            if (connection != null)
+            {
+                connection.Close();
+            }
         }
 
         public static void DeleteRoute(string nameOfRoute)
