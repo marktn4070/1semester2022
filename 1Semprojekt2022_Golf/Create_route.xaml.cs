@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Configuration;
 
 namespace _1Semprojekt2022_Golf
 {
@@ -23,7 +24,7 @@ namespace _1Semprojekt2022_Golf
     public partial class Create_route : Window
     {
         private List<Route> list = new List<Route>();
-        private Administrator admin;
+        public Administrator admin;
         public Create_route(Administrator amn)
         {
             admin = amn;
@@ -34,7 +35,7 @@ namespace _1Semprojekt2022_Golf
         }
 
 
-        SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
 
         private void Refresh()
         {
@@ -59,7 +60,6 @@ namespace _1Semprojekt2022_Golf
         public void LoadGrid_Runner(string txt__Id, string txt__Name, string txt__Year, string txt__Starttime, string txt__Distance)
         {
             string error = "";
-            SqlConnection con = null;
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Route WHERE ID LIKE @R_id AND Name LIKE @R_name AND Year LIKE @R_year AND Starttime LIKE @R_starttime AND Distance LIKE @R_distance", con);
@@ -174,26 +174,10 @@ namespace _1Semprojekt2022_Golf
 
             try
             {
-
                 if (IsValid())
                 {
-
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Route VALUES (@R_name, @R_year, @R_starttime, @R_distance)", con);
-                    cmd.CommandType = CommandType.Text;
-
-
-                    cmd.Parameters.AddWithValue("@R_name", R_name_txt.Text);
-                    cmd.Parameters.Add("@R_year", SqlDbType.Int).Value = R_year_txt.Text;
-                    cmd.Parameters.Add("@R_starttime", SqlDbType.SmallDateTime).Value = R_starttime_txt.Text;
-                    cmd.Parameters.Add("@R_distance", SqlDbType.Decimal).Value = R_distance_txt.Text;
-                    string R_name = R_name_txt.Text;
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-
-                    Refresh();
-                    MessageBox.Show("'" + R_name + "' er nu oprettet", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
-                    clearData();
+                    admin.AddRoute(R_name_txt.Text, int.Parse(R_year_txt.Text), DateTime.Parse(R_starttime_txt.Text), int.Parse(R_distance_txt.Text));
+                    
                 }
                 else
                 {
@@ -232,7 +216,6 @@ namespace _1Semprojekt2022_Golf
                     {
                         R_distance_error.Text = "";
                     }
-
                 }
             }
             catch (SqlException ex)
@@ -270,7 +253,6 @@ namespace _1Semprojekt2022_Golf
                 {
                     con.Close();
                 }
-
             }
 
         }

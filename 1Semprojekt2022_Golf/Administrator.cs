@@ -98,11 +98,21 @@ namespace _1Semprojekt2022_Golf
 
         }
 
-        public static void AddRoute(string nameOfRoute, int year, TimeSpan startTime, int length) //måske ikke timespan datatype...
+        public void AddRoute(string nameOfRoute, int year, DateTime startTime, int distance) //måske ikke timespan datatype...
         {
-            
-        }
+            SqlConnection con = null;
+                SqlCommand cmd = new SqlCommand("INSERT INTO Route VALUES (@R_name, @R_year, @R_starttime, @R_distance)", con);
+                cmd.CommandType = CommandType.Text;
+                IFormatProvider prov;
 
+                cmd.Parameters.AddWithValue("@R_name", nameOfRoute);
+                cmd.Parameters.Add("@R_year", SqlDbType.Int).Value = year;
+                cmd.Parameters.Add("@R_starttime", SqlDbType.SmallDateTime).Value = 
+                cmd.Parameters.Add("@R_distance", SqlDbType.Decimal).Value = distance;
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+        }
         public static void DeleteRoute(string nameOfRoute)
         {
 
