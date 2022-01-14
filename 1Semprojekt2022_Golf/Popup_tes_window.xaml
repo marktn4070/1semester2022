@@ -7,53 +7,42 @@
         mc:Ignorable="d"
         Title="Popup_tes_window" Height="450" Width="800">
     <Grid>
-        <!--<TextBox Name="Id" Height="23" Width="100" Margin="75,95,0,302" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="Name" Height="23" Width="100" Margin="75,151,0,246" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="Mail" Height="23" Width="100" Margin="75,151,0,246" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="Phone" Height="23" Width="100" Margin="75,204,0,193" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="Address" Height="23" Width="100" Margin="75,259,0,138" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="Zip" Height="23" Width="100" Margin="75,315,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="City" Height="23" Width="100" Margin="75,371,0,26" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="Name" Margin="10,95,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="E-mail" Margin="10,151,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="Telefon nr." Margin="10,204,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="Addresse" Margin="10,259,0,0" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="Post nr." Margin="10,315,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="By" Margin="10,370,0,0" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Grid>
+            <TextBox x:Name="R_name_txt" Height="23" Width="100" Margin="10,123,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBox x:Name="R_year_txt" Height="23" Width="100" Margin="10,270,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBox x:Name="R_starttime_txt" Height="23" Width="100" Margin="10,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBox x:Name="R_distance_txt" Height="23" Width="100" Margin="10,343,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Content="Name" Margin="10,97,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Content="År" Margin="10,245,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Content="Starttid" Margin="10,171,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Content="Længde" Margin="10,318,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button Content="Create" x:Name="CreateBtn" Margin="209,324,0,0" Width="70" Height="70" Click="CreateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button Content="Update" x:Name="UpdateBtn" Margin="319,324,0,0" Width="70" Height="70" Click="UpdateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button Content="Delete" x:Name="DeleteBtn" Margin="431,324,0,0" Width="70" Height="70" Click="DeleteBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button Content="Clear" x:Name="ClearDataBtn" Margin="546,324,0,0" Width="70" Height="70" Click="ClearDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button Content="Search" x:Name="SearchDataBtn" Margin="658,324,0,0" Width="70" Height="70" Click="SearchDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-        <Button Name="Tilfoej_deltager" Content="Tilføj deltager"  Margin="209,324,0,0" Width="70" Height="70"  VerticalAlignment="Top" HorizontalAlignment="Left" Click="Tilfoej_deltager_Click" />
-
-        --><!--<DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left"/>--><!--
-
-
-        <DataGrid Name="grid" Grid.Row="3" Grid.ColumnSpan="4" AutoGenerateColumns="False" CanUserAddRows="False"
-                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="80" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Name" Width="80" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Mail" Width="80" Binding="{Binding Mail}"/>
-                <DataGridTextColumn Header="Phone" Width="80" Binding="{Binding Phone}"/>
-                <DataGridTextColumn Header="Address" Width="80" Binding="{Binding Address}"/>
-                <DataGridTextColumn Header="Zip" Width="80" Binding="{Binding Zip}"/>
-                <DataGridTextColumn Header="City" Width="80" Binding="{Binding City}"/>
-                <DataGridTemplateColumn Header="View">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="btnView" Content="Update" Click="btnView_Click" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Header="View2">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="btnDelete" Content="Delete" Click="btnDelete_Click_2" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>-->
+            <TextBox x:Name="Search_txt" Height="23" Width="100" Margin="207,428,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Content="Id" Margin="183,424,0,0" Height="27" Width="22" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
 
+            <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret Løb" VerticalAlignment="Top" FontSize="30"/>
+
+            <TextBlock Text="" x:Name="R_distance_error"  Margin="10,366,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+            <TextBlock Text="" x:Name="R_starttime_error"  Margin="10,219,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+            <TextBlock Text="" x:Name="R_year__error"  Margin="10,293,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+            <TextBlock Text="" x:Name="R_navn_error"  Margin="10,146,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+
+            <DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="6" Grid.ColumnSpan="4" AutoGenerateColumns="False" CanUserAddRows="False"
+                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged" MouseDoubleClick="grid_MouseDoubleClick" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Width="80" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Year" Width="*" Binding="{Binding Year}"/>
+                    <DataGridTextColumn Header="Starttime" Width="*" Binding="{Binding Starttime}"/>
+                    <DataGridTextColumn Header="Distance" Width="*" Binding="{Binding Distance}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>
