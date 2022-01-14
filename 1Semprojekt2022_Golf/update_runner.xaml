@@ -9,7 +9,7 @@
     <Grid>
         <TextBox x:Name="P_name_txt" Height="23" Width="100" Margin="75,95,0,302" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="P_mail_txt" Height="23" Width="100" Margin="75,151,0,246" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox x:Name="P_phone_txt" Height="23" Width="100" Margin="75,204,0,193" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="P_phone_txt" Height="23" Width="100" Margin="75,204,0,193" VerticalAlignment="Top" HorizontalAlignment="Left" MaxLength="8"/>
         <TextBox x:Name="P_address_txt" Height="23" Width="100" Margin="75,259,0,138" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="P_zip_txt" Height="23" Width="100" Margin="75,315,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="P_city_txt" Height="23" Width="100" Margin="75,371,0,26" VerticalAlignment="Top" HorizontalAlignment="Left"/>

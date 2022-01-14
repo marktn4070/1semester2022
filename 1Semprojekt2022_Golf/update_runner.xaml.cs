@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions; // Skal bruges for at kunne bruge Regex
 
 namespace _1Semprojekt2022_Golf
 {
@@ -59,36 +60,75 @@ namespace _1Semprojekt2022_Golf
         }
         public bool IsValid()
         {
+
+            //Navne feltet
             if (P_name_txt.Text == string.Empty)
             {
                 MessageBox.Show("Navn skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
+            else if (Regex.IsMatch(P_name_txt.Text, "[^æøåÆØÅa-zA-Z ]"))
+            {
+                MessageBox.Show("Vær venligst at indtaste bogstaver ved 'Navn'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            ///Email feltet
             if (P_mail_txt.Text == string.Empty)
             {
                 MessageBox.Show("E-mail skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
+
+            //Telefonnummer feltet
             if (P_phone_txt.Text == string.Empty)
             {
                 MessageBox.Show("Telefon nr. skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            if (P_address_txt.Text == string.Empty)
+            else if (Regex.IsMatch(P_phone_txt.Text, "[^0-9]"))
             {
-                MessageBox.Show("Adsresse skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Vær venligst at indtaste tal ved 'Telefon nr'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                P_phone_txt.Text = P_phone_txt.Text.Remove(P_phone_txt.Text.Length - 1);
                 return false;
             }
+
+            //Adresse feltet
+            if (P_address_txt.Text == string.Empty)
+            {
+                MessageBox.Show("Addresse skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (Regex.IsMatch(P_address_txt.Text, "[^ÆØÅæøåa-zA-Z 0-9]"))
+            {
+                MessageBox.Show("Vær venligst at kun indtaste tal og bogstaver ved 'Adresse'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            //Postnummer feltet
             if (P_zip_txt.Text == string.Empty)
             {
                 MessageBox.Show("Post nr. skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
+            else if (Regex.IsMatch(P_zip_txt.Text, "[^0-9](0-4)"))
+            {
+                MessageBox.Show("Vær venligst at kun indtaste tal ved 'Post nr'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            //By feltet
             if (P_city_txt.Text == string.Empty)
             {
                 MessageBox.Show("Name is required", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
+            else if (Regex.IsMatch(P_city_txt.Text, "[^ÆØÅæøåa-zA-Z]"))
+            {
+                MessageBox.Show("Vær venligst at indtaste bogstaver ved 'By'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
             return true;
         }
 
