@@ -31,7 +31,6 @@ namespace _1Semprojekt2022_Golf
             LoadGrid_Route();
             LoadGrid_Time();
             Changed_index();
-
         }
         SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
 
