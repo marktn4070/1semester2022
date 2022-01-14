@@ -13,15 +13,15 @@ namespace _1Semprojekt2022_Golf
         public static void RegisterTime(int idOfRunner) //måske skal tiden føres ind som param, måske ikke PRØVER AT LAVE PÅ DENNE
         {
             SqlConnection connection = null;
-            
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-            SqlCommand cmd = new SqlCommand(string.Format(""), connection);
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+                SqlCommand cmd = new SqlCommand(string.Format(""), connection);
 
-            connection.Open();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.ExecuteNonQuery();
+                connection.Open();
 
-            if (connection != null)
+            }
+            catch
             {
 
             }
