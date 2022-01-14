@@ -167,7 +167,7 @@ namespace _1Semprojekt2022_Golf
         {
             if (Search_txt.Text == "")
             {
-                MessageBox.Show("Id'et skal udfyldes før sletning kan ske", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Id'et skal udfyldes før sletningen kan ske", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
             else

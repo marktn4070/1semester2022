@@ -63,6 +63,12 @@
     <Compile Include="Create_runner.xaml.cs">
       <DependentUpon>Create_runner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Popup_test.xaml.cs">
+      <DependentUpon>Popup_test.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popup_tes_window.xaml.cs">
+      <DependentUpon>Popup_tes_window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Route.cs" />
     <Compile Include="Runner.cs" />
     <Compile Include="Update_runner.xaml.cs">
@@ -89,6 +95,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Popup_test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popup_tes_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Update_runner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +125,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -10,9 +10,9 @@ namespace _1Semprojekt2022_Golf
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Runner(string name) //igen mangler params
+        public Runner(int id) //igen mangler params
         {
-            Name = name;
+            Id = id;
         }
     }
 }

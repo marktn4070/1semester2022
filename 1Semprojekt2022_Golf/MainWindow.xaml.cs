@@ -134,19 +134,16 @@ namespace _1Semprojekt2022_Golf
             secondWindow.Show();
         }
 
-        private void Button_Click_test(object sender, RoutedEventArgs e)
+        private void Test_Click(object sender, RoutedEventArgs e)
         {
-            test_grid.Visibility = Visibility.Visible;
-            Button_test.Visibility = Visibility.Hidden;
-            Button_test_reset.Visibility = Visibility.Visible;
+            this.Closing += new System.ComponentModel.CancelEventHandler(Test_runner_open);
+            this.Close();
 
         }
-        private void Button_Click_test_Reset(object sender, RoutedEventArgs e)
+        void Test_runner_open(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            test_grid.Visibility = Visibility.Hidden;
-            Button_test.Visibility = Visibility.Visible;
-            Button_test_reset.Visibility = Visibility.Hidden;
-
+            Popup_tes_window secondWindow = new Popup_tes_window();
+            secondWindow.Show();
         }
     }
 }

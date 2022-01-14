@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +26,9 @@ namespace _1Semprojekt2022_Golf
         {
             admin = admn;
             InitializeComponent();
-            this.Closing += new System.ComponentModel.CancelEventHandler(Create_runner_Closing);
+            //LoadGrid_Runner();
         }
+
 
         private void Tilfoej_deltager_Click(object sender, RoutedEventArgs e)
         {
@@ -39,16 +42,41 @@ namespace _1Semprojekt2022_Golf
                 Address.Clear();
                 Zip.Clear();
                 City.Clear();
+                //LoadGrid_Runner();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        void Create_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            MainWindow secondWindow = new MainWindow();
-            secondWindow.Show();
-        }
+
+
+        //void Create_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        //{
+        //    MainWindow secondWindow = new MainWindow();
+        //    secondWindow.Show();
+        //}
+        //public void LoadGrid_Runner()
+        //{
+        //    SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+
+        //    SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
+        //    DataTable dt = new DataTable();
+        //    con.Open();
+        //    SqlDataReader sdr = cmd.ExecuteReader();
+        //    dt.Load(sdr);
+        //    con.Close();
+        //    daragrid.ItemsSource = dt.DefaultView;
+
+
+
+
+
+        //    //admin.ShowRunner();
+
+        //    //daragrid.ItemsSource = dt.DefaultView;
+
+        //}
     }
+
 }
