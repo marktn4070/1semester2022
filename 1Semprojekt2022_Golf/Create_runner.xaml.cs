@@ -29,6 +29,7 @@ namespace _1Semprojekt2022_Golf
             //LoadGrid_Runner();
         }
 
+
         private void Tilfoej_deltager_Click(object sender, RoutedEventArgs e)
         {
             try
