@@ -31,6 +31,7 @@ namespace _1Semprojekt2022_Golf
             this.Closing += new System.ComponentModel.CancelEventHandler(Create_route_Closing);
         }
 
+
         SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
 
         private void Refresh()
@@ -85,30 +86,30 @@ namespace _1Semprojekt2022_Golf
         }
 
 
-//SqlDataReader reader = cmd.ExecuteReader();
-//            list.Clear();
-//            while (reader.Read()) list.Add(new Zipcode { Code = reader[0].ToString(), Cityd = reader[1].ToString() });
-//            Refresh();
+        //SqlDataReader reader = cmd.ExecuteReader();
+        //            list.Clear();
+        //            while (reader.Read()) list.Add(new Zipcode { Code = reader[0].ToString(), Cityd = reader[1].ToString() });
+        //            Refresh();
 
 
-//            string R_name = R_name_txt.Text;
-//            con.Open();
-//            cmd.ExecuteNonQuery();
-//            con.Close();
-//            
-             //Refresh();
-//            MessageBox.Show("'" + R_name + "' er nu oprettet", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
-//            clearData();
+        //            string R_name = R_name_txt.Text;
+        //            con.Open();
+        //            cmd.ExecuteNonQuery();
+        //            con.Close();
+        //            
+        //Refresh();
+        //            MessageBox.Show("'" + R_name + "' er nu oprettet", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+        //            clearData();
 
 
-//            DataTable dt = new DataTable();
-//            con.Open();
-//            SqlDataReader sdr = cmd.ExecuteReader();
-//            dt.Load(sdr);
-//            con.Close();
-//            daragrid.ItemsSource = dt.DefaultView;
+        //            DataTable dt = new DataTable();
+        //            con.Open();
+        //            SqlDataReader sdr = cmd.ExecuteReader();
+        //            dt.Load(sdr);
+        //            con.Close();
+        //            daragrid.ItemsSource = dt.DefaultView;
 
-//        }
+        //        }
         private SqlParameter CreateParam(string name, object value, SqlDbType type)
         {
             SqlParameter param = new SqlParameter(name, type);
