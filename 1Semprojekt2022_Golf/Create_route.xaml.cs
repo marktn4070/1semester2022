@@ -174,10 +174,9 @@ namespace _1Semprojekt2022_Golf
 
             try
             {
-
                 if (IsValid())
                 {
-                    admin.AddRoute(R_name_txt.Text, int.Parse(R_year_txt.Text), DateTime.Parse(R_starttime_txt.Text),)
+                    admin.AddRoute(R_name_txt.Text, int.Parse(R_year_txt.Text), DateTime.Parse(R_starttime_txt.Text),);
                     
                 }
                 else
@@ -217,7 +216,6 @@ namespace _1Semprojekt2022_Golf
                     {
                         R_distance_error.Text = "";
                     }
-
                 }
             }
             catch (SqlException ex)
@@ -255,7 +253,6 @@ namespace _1Semprojekt2022_Golf
                 {
                     con.Close();
                 }
-
             }
 
         }
