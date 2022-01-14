@@ -118,18 +118,16 @@ namespace _1Semprojekt2022_Golf
             param.Value = value;
             return param;
         }
-      
+
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int n = daragrid.SelectedIndex;
             if (n >= 0)
             {
                 R_name_txt.Text = list[n].Name;
-                R_year_txt.Text = list[n].Year;
+                R_year_txt.Text = list[n].Year.ToString();
                 R_starttime_txt.Text = list[n].Starttime;
-                R_distance_txt.Text = list[n].Distance;
-
-
+                R_distance_txt.Text = list[n].Distance.ToString();
             }
         }
 
