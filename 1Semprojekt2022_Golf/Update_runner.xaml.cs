@@ -248,7 +248,7 @@ namespace _1Semprojekt2022_Golf
 
 
 
-        public void Update_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        void Update_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow secondWindow = new MainWindow();
             secondWindow.Show();
