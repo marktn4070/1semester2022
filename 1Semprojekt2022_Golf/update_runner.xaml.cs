@@ -253,5 +253,10 @@ namespace _1Semprojekt2022_Golf
             MainWindow secondWindow = new MainWindow();
             secondWindow.Show();
         }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
