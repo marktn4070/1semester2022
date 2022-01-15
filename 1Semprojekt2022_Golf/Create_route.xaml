@@ -16,17 +16,17 @@
         <Label Content="År" Margin="10,245,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Starttid" Margin="10,171,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Længde" Margin="10,318,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Button Content="Create" x:Name="CreateBtn" Margin="209,324,0,0" Width="70" Height="70" Click="CreateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
-        <Button Content="Update" x:Name="UpdateBtn" Margin="319,324,0,0" Width="70" Height="70" Click="UpdateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
-        <Button Content="Delete" x:Name="DeleteBtn" Margin="431,324,0,0" Width="70" Height="70" Click="DeleteBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
-        <Button Content="Clear" x:Name="ClearDataBtn" Margin="546,324,0,0" Width="70" Height="70" Click="ClearDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
-        <Button Content="Search" x:Name="SearchDataBtn" Margin="658,324,0,0" Width="70" Height="70" Click="SearchDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
+        <Button Content="Create" x:Name="CreateBtn" Margin="209,324,0,0" Width="70" Height="70" Click="CreateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontStyle="Italic"/>
+        <Button Content="Update" x:Name="UpdateBtn" Margin="319,324,0,0" Width="70" Height="70" Click="UpdateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontStyle="Italic"/>
+        <Button Content="Delete" x:Name="DeleteBtn" Margin="431,324,0,0" Width="70" Height="70" Click="DeleteBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontStyle="Italic"/>
+        <Button Content="Clear" x:Name="ClearDataBtn" Margin="546,324,0,0" Width="70" Height="70" Click="ClearDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontStyle="Italic" FontWeight="Bold"/>
+        <Button Content="Search" x:Name="SearchDataBtn" Margin="658,324,0,0" Width="70" Height="70" Click="SearchDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontStyle="Italic"/>
 
         <TextBox x:Name="Search_txt" Height="23" Width="100" Margin="207,428,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Id" Margin="183,424,0,0" Height="27" Width="22" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
         
-        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret Løb" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret Løb" VerticalAlignment="Top" FontSize="30" FontStyle="Italic" FontWeight="Bold"/>
 
         <TextBlock Text="" x:Name="R_distance_error"  Margin="10,366,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         <TextBlock Text="" x:Name="R_starttime_error"  Margin="10,219,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
