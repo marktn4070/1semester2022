@@ -71,7 +71,7 @@ namespace _1Semprojekt2022_Golf
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 Route_list.Clear();
-                while (sdr.Read()) Route_list.Add(new Route_strings { R_id = sdr[0].ToString(), R_name = sdr[1].ToString(), R_year = sdr[2].ToString(), R_starttime = sdr[3].ToString(), R_distance = sdr[4].ToString()});
+                while (sdr.Read()) Route_list.Add(new Route_strings { R_id = sdr[0].ToString(), R_name = sdr[1].ToString(), R_year = sdr[2].ToString(), R_starttime = sdr[3].ToString(), R_distance = sdr[4].ToString() });
                 Refresh();
             }
             catch (Exception ex)
@@ -93,12 +93,12 @@ namespace _1Semprojekt2022_Golf
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
-            DataTable dt = new DataTable();
-            con.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            Participant_list.Clear();
-            while (sdr.Read()) Participant_list.Add(new Participant_strings { P_id = sdr[0].ToString(), P_name = sdr[1].ToString(), P_mail = sdr[2].ToString(), P_phone = sdr[3].ToString(), P_address = sdr[4].ToString(), P_zip = sdr[5].ToString(), P_city = sdr[6].ToString()});
-            Refresh();
+                DataTable dt = new DataTable();
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                Participant_list.Clear();
+                while (sdr.Read()) Participant_list.Add(new Participant_strings { P_id = sdr[0].ToString(), P_name = sdr[1].ToString(), P_mail = sdr[2].ToString(), P_phone = sdr[3].ToString(), P_address = sdr[4].ToString(), P_zip = sdr[5].ToString(), P_city = sdr[6].ToString() });
+                Refresh();
             }
             catch (Exception ex)
             {
@@ -350,31 +350,31 @@ namespace _1Semprojekt2022_Golf
             if (Result == MessageBoxResult.Yes)
             {
                 SqlConnection connection = null;
-            try
-            {
-                    
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-                SqlCommand command = new SqlCommand("Delete FROM Participant WHERE P_id = @P_id", connection);
+                try
+                {
+
+                    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+                    SqlCommand command = new SqlCommand("Delete FROM Participant WHERE P_id = @P_id", connection);
                     command.Parameters.Add(CreateParam("@P_id", selected_id.Trim(), SqlDbType.NVarChar));
                     connection.Open();
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    Clear();
-                    return;
-                }
-                error = "Illegal database operation";
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        Clear();
+                        return;
+                    }
+                    error = "Illegal database operation";
 
-            }
-            catch (Exception ex)
-            {
-                error = ex.Message;
-            }
-            finally
-            {
-                if (connection != null) connection.Close();
-            }
-                
-            MessageBox.Show(error);
+                }
+                catch (Exception ex)
+                {
+                    error = ex.Message;
+                }
+                finally
+                {
+                    if (connection != null) connection.Close();
+                }
+
+                MessageBox.Show(error);
 
             }
             else if (Result == MessageBoxResult.No)
