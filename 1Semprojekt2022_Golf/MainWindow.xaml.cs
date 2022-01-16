@@ -165,14 +165,14 @@ namespace _1Semprojekt2022_Golf
                 case 1:
                     Title.Text = "Løberute";
                     page_deltager.Visibility = Visibility.Hidden;
-                    page_tidstagning.Visibility = Visibility.Visible;
-                    page_løberute.Visibility = Visibility.Hidden;
+                    page_tidstagning.Visibility = Visibility.Hidden;
+                    page_løberute.Visibility = Visibility.Visible;
                     break;
                 case 2:
                     Title.Text = "Tidstagning";
                     page_deltager.Visibility = Visibility.Hidden;
-                    page_tidstagning.Visibility = Visibility.Hidden;
-                    page_løberute.Visibility = Visibility.Visible;
+                    page_tidstagning.Visibility = Visibility.Visible;
+                    page_løberute.Visibility = Visibility.Hidden;
                     break;
             }
 
@@ -196,15 +196,15 @@ namespace _1Semprojekt2022_Golf
                 case 1:
                     Title.Text = "Løberute";
                     page_deltager.Visibility = Visibility.Hidden;
-                    page_tidstagning.Visibility = Visibility.Visible;
-                    page_løberute.Visibility = Visibility.Hidden;
+                    page_tidstagning.Visibility = Visibility.Hidden;
+                    page_løberute.Visibility = Visibility.Visible;
                     LastIndex.foo = index;
                     break;
                 case 2:
                     Title.Text = "Tidstagning";
                     page_deltager.Visibility = Visibility.Hidden;
-                    page_tidstagning.Visibility = Visibility.Hidden;
-                    page_løberute.Visibility = Visibility.Visible;
+                    page_tidstagning.Visibility = Visibility.Visible;
+                    page_løberute.Visibility = Visibility.Hidden;
                     LastIndex.foo = index;
                     break;
             }

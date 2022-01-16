@@ -44,7 +44,7 @@ namespace _1Semprojekt2022_Golf
         public static void ShowRunner()
         {
             SqlConnection connection = null;
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["post"].ConnectionString);
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
             SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Participant"), connection);
             DataTable dt = new DataTable();
             connection.Open();
