@@ -67,7 +67,7 @@ namespace _1Semprojekt2022_Golf
                 cmd.Parameters.Add(CreateParam("@R_name", txt__Name + "%", SqlDbType.NVarChar));
                 cmd.Parameters.Add(CreateParam("@R_year", txt__Year + "%", SqlDbType.Int));
                 cmd.Parameters.Add(CreateParam("@R_starttime", txt__Starttime + "%", SqlDbType.SmallDateTime));
-                cmd.Parameters.Add(CreateParam("@R_distance", txt__Distance + "%", SqlDbType.Int));
+                cmd.Parameters.Add(CreateParam("@R_distance", txt__Distance + "%", SqlDbType.Decimal));
                 con.Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
@@ -291,15 +291,15 @@ namespace _1Semprojekt2022_Golf
         }
         private void SearchDataBtn_Click(object sender, RoutedEventArgs e)
         {
-            //con.Open();
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM Route WHERE P_id = " + Search_txt.Text, con);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Route WHERE P_id = " + Search_txt.Text, con);
 
-            //DataTable dt = new DataTable();
-            //con.Open();
-            //SqlDataReader sdr = cmd.ExecuteReader();
-            //dt.Load(sdr);
-            //con.Close();
-            //daragrid.ItemsSource = dt.DefaultView;
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            con.Close();
+            daragrid.ItemsSource = dt.DefaultView;
 
 
 

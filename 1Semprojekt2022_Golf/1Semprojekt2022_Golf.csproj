@@ -74,6 +74,9 @@
     <Compile Include="Update_runner.xaml.cs">
       <DependentUpon>Update_runner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ZipWindow.xaml.cs">
+      <DependentUpon>ZipWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Create_route.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Update_runner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ZipWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
