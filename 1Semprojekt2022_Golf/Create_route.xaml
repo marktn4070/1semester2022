@@ -10,11 +10,14 @@
     <Grid>
         <TextBox x:Name="R_name_txt" Height="23" Width="100" Margin="10,123,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="R_year_txt" Height="23" Width="100" Margin="10,270,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox x:Name="R_starttime_txt" Height="23" Width="100" Margin="10,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="R_starttimeHour_txt" Height="22" Width="20" Margin="10,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="R_starttimeMinute_txt" Height="22" Width="20" Margin="44,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <Label Content=":" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,194,0,0"/>
         <TextBox x:Name="R_distance_txt" Height="23" Width="100" Margin="10,343,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Navn:" Margin="10,97,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="År:" Margin="10,245,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Starttid:" Margin="10,171,0,0" Height="25" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Starttid: Time:Minut" Margin="10,171,0,0" Height="25" Width="131" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="Længde:" Margin="10,318,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Button Content="Opret" x:Name="CreateBtn" Margin="209,324,0,0" Width="70" Height="70" Click="CreateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>
         <Button Content="Opdatere" x:Name="UpdateBtn" Margin="319,324,0,0" Width="70" Height="70" Click="UpdateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>
@@ -24,7 +27,7 @@
         <TextBox x:Name="Search_txt" Height="23" Width="100" Margin="207,428,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Id" Margin="183,424,0,0" Height="27" Width="22" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
 
-        
+
         <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret løberute" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
 
         <TextBlock Text="" x:Name="R_distance_error"  Margin="10,366,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>

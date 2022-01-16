@@ -41,7 +41,8 @@ namespace _1Semprojekt2022_Golf
         {
             R_name_txt.Clear();
             R_year_txt.Clear();
-            R_starttime_txt.Clear();
+            R_starttimeHour_txt.Clear();
+            R_starttimeMinute_txt.Clear();
             R_distance_txt.Clear();
         }
   
@@ -59,7 +60,7 @@ namespace _1Semprojekt2022_Golf
         }
         public bool IsValid()
         {
-            if (R_name_txt.Text == string.Empty || R_year_txt.Text == string.Empty || R_starttime_txt.Text == string.Empty || R_distance_txt.Text == string.Empty)
+            if (R_name_txt.Text == string.Empty || R_year_txt.Text == string.Empty || R_starttimeHour_txt.Text == string.Empty || R_starttimeMinute_txt.Text == string.Empty || R_distance_txt.Text == string.Empty)
             {
                 MessageBox.Show("En eller flere felter er ikke udfyldt", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -74,7 +75,7 @@ namespace _1Semprojekt2022_Golf
             {
                 if (IsValid())
                 {
-                    admin.AddRoute(R_name_txt.Text, int.Parse(R_year_txt.Text), DateTime.Parse(R_starttime_txt.Text), int.Parse(R_distance_txt.Text));
+                    admin.AddRoute(R_name_txt.Text, int.Parse(R_year_txt.Text), int.Parse(R_starttimeHour_txt.Text), int.Parse(R_starttimeMinute_txt.Text), int.Parse(R_distance_txt.Text));
                     
                 }
                 else
@@ -97,7 +98,7 @@ namespace _1Semprojekt2022_Golf
                         R_year__error.Text = "";
                     }
 
-                    if (R_starttime_txt.Text == string.Empty)
+                    if (R_starttimeHour_txt.Text == string.Empty || R_starttimeMinute_txt.Text == string.Empty)
                     {
                         R_starttime_error.Text = "Starttid skal udfyldes";
                     }
@@ -165,7 +166,7 @@ namespace _1Semprojekt2022_Golf
             else
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("update Route set R_name = '" + R_name_txt.Text + "', R_year = '" + R_year_txt.Text + "', R_starttime = '" + R_starttime_txt.Text + "', R_distance = '" + R_distance_txt.Text + "' WHERE P_id = '" + Search_txt.Text + "' ", con);
+                SqlCommand cmd = new SqlCommand("update Route set R_name = '" + R_name_txt.Text + "', R_year = '" + R_year_txt.Text + "', R_starttime = '" + (int.Parse(R_starttimeHour_txt.Text)*60*60+int.Parse(R_starttimeMinute_txt.Text)*60) + "', R_distance = '" + R_distance_txt.Text + "' WHERE P_id = '" + Search_txt.Text + "' ", con);
                 try
                 {
                     cmd.ExecuteNonQuery();
