@@ -24,12 +24,7 @@ namespace _1Semprojekt2022_Golf
             {
                 admin.MakeNewRunner(Name.Text, Mail.Text, int.Parse(Phone.Text), Address.Text, int.Parse(Zip.Text), City.Text);
                 MessageBox.Show("Løber gemt"); //måske behøver vi ikke dette......
-                Name.Clear();
-                Mail.Clear();
-                Phone.Clear();
-                Address.Clear();
-                Zip.Clear();
-                City.Clear();
+                Clear();
                 //LoadGrid_Runner();
             }
             catch (Exception ex)
@@ -38,11 +33,26 @@ namespace _1Semprojekt2022_Golf
             }
         }
 
+        private void Clear()
+        {
+            Name.Clear();
+            Mail.Clear();
+            Phone.Clear();
+            Address.Clear();
+            Zip.Clear();
+            City.Clear();
+        }
+
 
         void Create_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow secondWindow = new MainWindow();
             secondWindow.Show();
+        }
+
+        private void Nulstil_Felter_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
         }
         //public void LoadGrid_Runner()
         //{
