@@ -96,8 +96,11 @@
                 <DataGrid x:Name="daragrid_tidstagning"  HorizontalAlignment="Left" Width="552" Height="200" Margin="125,139,0,161" />
             </Grid>
 
+            <Grid x:Name="page_deltager" Height="500" Background="White" Margin="0,0,-0.4,0">
 
-            <Gri<Button Content="Opret &#xD;&#xA;Deltager" Margin="606,48,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Button_Click_1"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" Style="{DynamicResource RoundedButtonStyle}" FontStyle="Italic" FontSize="14"/>
+                <Button Content="Opret &#xD;&#xA;Deltager" Margin="606,48,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Button_Click_1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" Style="{DynamicResource RoundedButtonStyle}" FontStyle="Italic" FontSize="14"/>
+
+
                 <DataGrid x:Name="daragrid_deltager"  HorizontalAlignment="Left" Width="552" Height="200" Margin="125,139,0,161"   Grid.Row="3" Grid.ColumnSpan="9" AutoGenerateColumns="False" CanUserAddRows="False"
                   IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged"  >
 
@@ -148,12 +151,12 @@
                 <Button Content="x" x:Name="ClearDataBtn" Margin="284,87,0,0" Width="33" Height="31" RenderTransformOrigin="0.504,0.504" Click="ClearDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#fff" FontSize="22" BorderBrush="{x:Null}" Foreground="#FF939393"/>
                 <Button Content="Søg" x:Name="SearchDataBtn" Margin="284,87,0,0" Width="33" Height="31" RenderTransformOrigin="0.504,0.504" Click="Btn_Runner_Search_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
 
-            </Gri>
+        </Grid>
 
 
 
 
-            <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Deltager" VerticalAlignment="Top" FontSize="30" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Deltager" VerticalAlignment="Top" FontSize="30" FontWeight="Bold" FontStyle="Italic"/>
         </Grid>
 
 
