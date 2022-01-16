@@ -32,8 +32,8 @@ namespace _1Semprojekt2022_Golf
 
         private void Refresh()
         {
-            daragrid_deltager.ItemsSource = new ObservableCollection<Participant_strings>(Participant_list);
-            daragrid_løberute.ItemsSource = new ObservableCollection<Route_strings>(Route_list);
+            datagrid_deltager.ItemsSource = new ObservableCollection<Participant_strings>(Participant_list);
+            datagrid_løberute.ItemsSource = new ObservableCollection<Route_strings>(Route_list);
         }
         private class Participant_strings
         {
@@ -57,7 +57,7 @@ namespace _1Semprojekt2022_Golf
 
         private void Clear()
         {
-            daragrid_deltager.SelectedIndex = -1;
+            datagrid_deltager.SelectedIndex = -1;
             LoadGrid_Runner();
         }
 
@@ -119,7 +119,7 @@ namespace _1Semprojekt2022_Golf
             SqlDataReader sdr = cmd.ExecuteReader();
             dt.Load(sdr);
             con.Close();
-            daragrid_deltager.ItemsSource = dt.DefaultView;
+            datagrid_deltager.ItemsSource = dt.DefaultView;
 
             if (Search_txt.Text != string.Empty)
             {
@@ -137,13 +137,13 @@ namespace _1Semprojekt2022_Golf
 
         public void LoadGrid_Time()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Route", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Registered", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
             dt.Load(sdr);
             con.Close();
-            daragrid_tidstagning.ItemsSource = dt.DefaultView;
+            datagrid_tidstagning.ItemsSource = dt.DefaultView;
         }
 
 
@@ -257,7 +257,7 @@ namespace _1Semprojekt2022_Golf
 
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int n = daragrid_deltager.SelectedIndex;
+            int n = datagrid_deltager.SelectedIndex;
         }
 
 
@@ -278,7 +278,7 @@ namespace _1Semprojekt2022_Golf
             {
                 //MessageBox.Show(ex.Message.ToString());
             }
-            int n = daragrid_løberute.SelectedIndex;
+            int n = datagrid_løberute.SelectedIndex;
             if (n >= 0)
             {
                 string R_name_sting = Route_list[n].R_name;
@@ -310,7 +310,7 @@ namespace _1Semprojekt2022_Golf
             {
                 //MessageBox.Show(ex.Message.ToString());
             }
-            int n = daragrid_deltager.SelectedIndex;
+            int n = datagrid_deltager.SelectedIndex;
             if (n >= 0)
             {
 
@@ -341,9 +341,9 @@ namespace _1Semprojekt2022_Golf
                 //MessageBox.Show(ex.Message.ToString());
             }
             string error = "";
-            string selected_id = Participant_list[daragrid_deltager.SelectedIndex].P_id;
-            string selected_name = Participant_list[daragrid_deltager.SelectedIndex].P_name;
-            int n = daragrid_deltager.SelectedIndex;
+            string selected_id = Participant_list[datagrid_deltager.SelectedIndex].P_id;
+            string selected_name = Participant_list[datagrid_deltager.SelectedIndex].P_name;
+            int n = datagrid_deltager.SelectedIndex;
 
 
             var Result = MessageBox.Show("Er du sikker på, at du vil slette '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -393,7 +393,7 @@ namespace _1Semprojekt2022_Golf
                 //MessageBox.Show(ex.Message.ToString());
             }
             string error = "";
-            string selected_id = Route_list[daragrid_løberute.SelectedIndex].R_id;
+            string selected_id = Route_list[datagrid_løberute.SelectedIndex].R_id;
             SqlConnection connection = null;
             try
             {
