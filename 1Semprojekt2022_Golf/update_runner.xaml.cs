@@ -36,7 +36,7 @@ namespace _1Semprojekt2022_Golf
             P_address_txt.Clear();
             P_zip_txt.Clear();
             P_city_txt.Clear();
-            Search_txt.Clear();
+            //Search_txt.Clear();
             LoadGrid_Runner();
         }
         public void LoadGrid_Runner()
@@ -71,14 +71,19 @@ namespace _1Semprojekt2022_Golf
                 return false;
             }
 
-            ///Email feltet
+            // Email feltet
             if (P_mail_txt.Text == string.Empty)
             {
                 MessageBox.Show("E-mail skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
+            else if (!Regex.IsMatch(P_mail_txt.Text, @"^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$"))
+            {
+                MessageBox.Show("Vær venligst at indtaste en korrekt e-mail adresse", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
 
-            //Telefonnummer feltet
+            // Telefonnummer feltet
             if (P_phone_txt.Text == string.Empty)
             {
                 MessageBox.Show("Telefon nr. skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -91,7 +96,7 @@ namespace _1Semprojekt2022_Golf
                 return false;
             }
 
-            //Adresse feltet
+            // Adresse feltet
             if (P_address_txt.Text == string.Empty)
             {
                 MessageBox.Show("Addresse skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -103,7 +108,7 @@ namespace _1Semprojekt2022_Golf
                 return false;
             }
 
-            //Postnummer feltet
+            // Postnummer feltet
             if (P_zip_txt.Text == string.Empty)
             {
                 MessageBox.Show("Post nr. skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -115,7 +120,7 @@ namespace _1Semprojekt2022_Golf
                 return false;
             }
 
-            //By feltet
+            // By feltet
             if (P_city_txt.Text == string.Empty)
             {
                 MessageBox.Show("Name is required", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -266,9 +271,5 @@ namespace _1Semprojekt2022_Golf
 
         }
 
-        public static implicit operator Update_runner(Update_route v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
