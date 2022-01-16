@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Collections.ObjectModel;
-using _1Semprojekt2022_Golf.View;
 using static _1Semprojekt2022_Golf.Administrator;
+using System.Configuration;
+
 
 namespace _1Semprojekt2022_Golf
 {
@@ -25,7 +17,8 @@ namespace _1Semprojekt2022_Golf
     public partial class MainWindow : Window
     {
         Administrator admin = new Administrator();
-        private List<Zipcode> list = new List<Zipcode>();
+        private List<Participant_strings> Participant_list = new List<Participant_strings>();
+        private List<Route_strings> Route_list = new List<Route_strings>();
 
         public MainWindow()
         {
@@ -39,9 +32,10 @@ namespace _1Semprojekt2022_Golf
 
         private void Refresh()
         {
-            daragrid_deltager.ItemsSource = new ObservableCollection<Zipcode>(list);
+            daragrid_deltager.ItemsSource = new ObservableCollection<Participant_strings>(Participant_list);
+            daragrid_løberute.ItemsSource = new ObservableCollection<Route_strings>(Route_list);
         }
-        private class Zipcode
+        private class Participant_strings
         {
             public string P_id { get; set; }
             public string P_name { get; set; }
@@ -51,12 +45,47 @@ namespace _1Semprojekt2022_Golf
             public string P_zip { get; set; }
             public string P_city { get; set; }
         }
+        private class Route_strings
+        {
+            public string R_id { get; set; }
+            public string R_name { get; set; }
+            public string R_year { get; set; }
+            public string R_starttime { get; set; }
+            public string R_distance { get; set; }
+
+        }
 
         private void Clear()
         {
             daragrid_deltager.SelectedIndex = -1;
             LoadGrid_Runner();
         }
+
+        public void LoadGrid_Route()
+        {
+            //SqlConnection con = null;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
+                DataTable dt = new DataTable();
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                Route_list.Clear();
+                while (sdr.Read()) Route_list.Add(new Route_strings { R_id = sdr[0].ToString(), R_name = sdr[1].ToString(), R_year = sdr[2].ToString(), R_starttime = sdr[3].ToString(), R_distance = sdr[4].ToString()});
+                Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+        }
+
+
+
 
         public void LoadGrid_Runner()
         {
@@ -66,10 +95,9 @@ namespace _1Semprojekt2022_Golf
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
             DataTable dt = new DataTable();
             con.Open();
-            //SqlDataReader sdr = cmd.ExecuteReader();
             SqlDataReader sdr = cmd.ExecuteReader();
-            list.Clear();
-            while (sdr.Read()) list.Add(new Zipcode { P_id = sdr[0].ToString(), P_name = sdr[1].ToString(), P_mail = sdr[2].ToString(), P_phone = sdr[3].ToString(), P_address = sdr[4].ToString(), P_zip = sdr[5].ToString(), P_city = sdr[6].ToString()});
+            Participant_list.Clear();
+            while (sdr.Read()) Participant_list.Add(new Participant_strings { P_id = sdr[0].ToString(), P_name = sdr[1].ToString(), P_mail = sdr[2].ToString(), P_phone = sdr[3].ToString(), P_address = sdr[4].ToString(), P_zip = sdr[5].ToString(), P_city = sdr[6].ToString()});
             Refresh();
             }
             catch (Exception ex)
@@ -118,17 +146,6 @@ namespace _1Semprojekt2022_Golf
             daragrid_tidstagning.ItemsSource = dt.DefaultView;
         }
 
-        public void LoadGrid_Route()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Registered", con);
-            DataTable dt = new DataTable();
-            con.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dt.Load(sdr);
-            con.Close();
-            daragrid_løberute.ItemsSource = dt.DefaultView;
-
-        }
 
         public void Changed_index()
         {
@@ -218,29 +235,10 @@ namespace _1Semprojekt2022_Golf
         }
 
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            this.Closing += new System.ComponentModel.CancelEventHandler(Update_runner_open);
-            this.Close();
-        }
 
-        void Update_runner_open(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Update_runner secondWindow = new Update_runner();
-            secondWindow.Show();
-        }
 
-        private void Test_Click(object sender, RoutedEventArgs e)
-        {
-            this.Closing += new System.ComponentModel.CancelEventHandler(Test_runner_open);
-            this.Close();
 
-        }
-        void Test_runner_open(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Popup_tes_window secondWindow = new Popup_tes_window();
-            secondWindow.Show();
-        }
+
 
         private void ClearDataBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -260,20 +258,53 @@ namespace _1Semprojekt2022_Golf
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int n = daragrid_deltager.SelectedIndex;
+        }
+
+
+
+        private void Route_btnView_Click(object sender, RoutedEventArgs e)
+        {
+            this.Closing += new System.ComponentModel.CancelEventHandler(Update_route_opdate);
+            this.Close();
+        }
+
+        private void Update_route_opdate(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                //DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message.ToString());
+            }
+            int n = daragrid_løberute.SelectedIndex;
             if (n >= 0)
             {
-                //txtCode.Text = list[n].Code;
-                //txtCity.Text = list[n].Cityd;
+                string R_name_sting = Route_list[n].R_name;
+                string R_year_sting = Route_list[n].R_year;
+                string R_starttime_sting = Route_list[n].R_starttime;
+                string R_distance_sting = Route_list[n].R_distance;
+                Update_runner win2 = new Update_route(R_name_sting, R_year_sting, R_starttime_sting, R_distance_sting);
+                win2.Show();
             }
         }
 
 
 
+
+
         private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            this.Closing += new System.ComponentModel.CancelEventHandler(Update_runner_opdate);
+            this.Close();
+        }
+
+        private void Update_runner_opdate(object sender, System.ComponentModel.CancelEventArgs e)
         {
             try
             {
-                DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+                //DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
             }
             catch (Exception ex)
             {
@@ -282,47 +313,114 @@ namespace _1Semprojekt2022_Golf
             int n = daragrid_deltager.SelectedIndex;
             if (n >= 0)
             {
-                string hej = list[n].P_id;
-                ZipWindow win2 = new ZipWindow(hej);
+
+                string P_name_sting = Participant_list[n].P_name;
+                string P_mail_sting = Participant_list[n].P_mail;
+                string P_phone_sting = Participant_list[n].P_phone;
+                string P_address_sting = Participant_list[n].P_address;
+                string P_zip_sting = Participant_list[n].P_zip;
+                string P_city_sting = Participant_list[n].P_city;
+                Update_runner win2 = new Update_runner(P_name_sting, P_mail_sting, P_phone_sting, P_address_sting, P_zip_sting, P_city_sting);
                 win2.Show();
             }
         }
-
+        private SqlParameter CreateParam(string name, object value, SqlDbType type)
+        {
+            SqlParameter param = new SqlParameter(name, type);
+            param.Value = value;
+            return param;
+        }
         private void btnDelete_Click_2(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //MessageBox.Show(ex.Message.ToString());
-            //}
-            //string error = "";
-            //string selected_id = list[grid.SelectedIndex].Code;
-            //SqlConnection connection = null;
-            //try
-            //{
-            //    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["post"].ConnectionString);
-            //    SqlCommand command = new SqlCommand("Delete FROM Zipcodes WHERE Code = @Code", connection);
-            //    command.Parameters.Add(CreateParam("@Code", selected_id.Trim(), SqlDbType.NVarChar));
-            //    connection.Open();
-            //    if (command.ExecuteNonQuery() == 1)
-            //    {
-            //        Clear();
-            //        return;
-            //    }
-            //    error = "Illegal database operation";
-            //}
-            //catch (Exception ex)
-            //{
-            //    error = ex.Message;
-            //}
-            //finally
-            //{
-            //    if (connection != null) connection.Close();
-            //}
-            //MessageBox.Show(error);
+            try
+            {
+                //DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message.ToString());
+            }
+            string error = "";
+            string selected_id = Participant_list[daragrid_deltager.SelectedIndex].P_id;
+            string selected_name = Participant_list[daragrid_deltager.SelectedIndex].P_name;
+            int n = daragrid_deltager.SelectedIndex;
+
+
+            var Result = MessageBox.Show("Er du sikker på, at du vil slette '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (Result == MessageBoxResult.Yes)
+            {
+                SqlConnection connection = null;
+            try
+            {
+                    
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+                SqlCommand command = new SqlCommand("Delete FROM Participant WHERE P_id = @P_id", connection);
+                    command.Parameters.Add(CreateParam("@P_id", selected_id.Trim(), SqlDbType.NVarChar));
+                    connection.Open();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    Clear();
+                    return;
+                }
+                error = "Illegal database operation";
+
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            finally
+            {
+                if (connection != null) connection.Close();
+            }
+                
+            MessageBox.Show(error);
+
+            }
+            else if (Result == MessageBoxResult.No)
+            {
+                LoadGrid_Runner();
+            }
+        }
+        private void Route_btnDelete_Click_2(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message.ToString());
+            }
+            string error = "";
+            string selected_id = Route_list[daragrid_løberute.SelectedIndex].R_id;
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+                SqlCommand command = new SqlCommand("Delete FROM Route WHERE R_id = @R_id", connection);
+                command.Parameters.Add(CreateParam("@R_id", selected_id.Trim(), SqlDbType.NVarChar));
+                connection.Open();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    Clear();
+                    return;
+                }
+                error = "Illegal database operation";
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            finally
+            {
+                if (connection != null) connection.Close();
+            }
+            MessageBox.Show(error);
+        }
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

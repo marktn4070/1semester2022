@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:_1Semprojekt2022_Golf"
         mc:Ignorable="d"
-        Title="Opret Løb" Height="500" Width="800">
+        Title="Opret Løberute" Height="500" Width="900">
     <Grid>
         <TextBox x:Name="R_name_txt" Height="23" Width="100" Margin="10,123,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="R_year_txt" Height="23" Width="100" Margin="10,270,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
@@ -20,28 +20,17 @@
         <Button Content="Opdatere" x:Name="UpdateBtn" Margin="319,324,0,0" Width="70" Height="70" Click="UpdateBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>
         <Button Content="Slet" x:Name="DeleteBtn" Margin="431,324,0,0" Width="70" Height="70" Click="DeleteBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>
         <Button Content="Nulstil" x:Name="ClearDataBtn" Margin="546,324,0,0" Width="70" Height="70" Click="ClearDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontStyle="Italic" FontWeight="Bold" FontSize="14"/>
-        <Button Content="Søg" x:Name="SearchDataBtn" Margin="658,324,0,0" Width="70" Height="70" Click="SearchDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>
 
         <TextBox x:Name="Search_txt" Height="23" Width="100" Margin="207,428,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Id" Margin="183,424,0,0" Height="27" Width="22" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
 
         
-        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret Løb" VerticalAlignment="Top" FontSize="30" FontStyle="Italic" FontWeight="Bold"/>
+        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret løberute" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
 
         <TextBlock Text="" x:Name="R_distance_error"  Margin="10,366,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         <TextBlock Text="" x:Name="R_starttime_error"  Margin="10,219,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         <TextBlock Text="" x:Name="R_year__error"  Margin="10,293,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         <TextBlock Text="" x:Name="R_navn_error"  Margin="10,146,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
-        
-        <DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="5" Grid.ColumnSpan="5" AutoGenerateColumns="False" CanUserAddRows="False"
-                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged" MouseDoubleClick="grid_MouseDoubleClick" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="80" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Year" Width="*" Binding="{Binding Year}"/>
-                <DataGridTextColumn Header="Starttime" Width="*" Binding="{Binding Starttime}"/>
-                <DataGridTextColumn Header="Distance" Width="*" Binding="{Binding Distance}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_1Semprojekt2022_Golf"
         mc:Ignorable="d"
-        Title="Create_runner" Height="500" Width="800">
+        Title="Opret Deltager" Height="500" Width="900">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -77,9 +77,9 @@
         <Label Content="Post nr:" Margin="10,315,0,0" Height="30" Width="75" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="By:" Margin="10,370,0,0" Height="30" Width="75" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
 
-        <Button Name="Tilfoej_deltager" Content="Tilføj &#xD;&#xA;Deltager"  Margin="209,340,0,0" Width="86" Height="54"  VerticalAlignment="Top" HorizontalAlignment="Left" Click="Tilfoej_deltager_Click" Background="#FF5C5959" Foreground="#FFFFFF" Style="{DynamicResource RoundedButtonStyle}" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>
+        <Button Name="Tilfoej_deltager" Content="Tilføj &#xD;&#xA;Deltager"  Margin="231,324,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Tilfoej_deltager_Click"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF"  Style="{DynamicResource RoundedButtonStyle}" FontWeight="Bold" FontSize="14"/>
 
         <!--<DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
-        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret Deltager" VerticalAlignment="Top" FontSize="30" FontStyle="Italic" FontWeight="Bold"/>
+        <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Opret Deltager" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
     </Grid>
 </Window>
