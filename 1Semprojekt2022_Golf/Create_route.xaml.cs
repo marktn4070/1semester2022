@@ -76,7 +76,7 @@ namespace _1Semprojekt2022_Golf
                 if (IsValid())
                 {
                     admin.AddRoute(R_name_txt.Text, int.Parse(R_year_txt.Text), int.Parse(R_starttimeHour_txt.Text), int.Parse(R_starttimeMinute_txt.Text), int.Parse(R_distance_txt.Text));
-                    
+                    Close();
                 }
                 else
                 {

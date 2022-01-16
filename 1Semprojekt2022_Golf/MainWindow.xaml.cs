@@ -66,7 +66,7 @@ namespace _1Semprojekt2022_Golf
             //SqlConnection con = null;
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Route", con);
                 DataTable dt = new DataTable();
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -418,9 +418,20 @@ namespace _1Semprojekt2022_Golf
             }
             MessageBox.Show(error);
         }
+
+
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-
+            this.Closing += new System.ComponentModel.CancelEventHandler(Create_runner_finishtime_open);
+            this.Close();
         }
+
+        void Create_runner_finishtime_open(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Create_runner_finishtime secondWindow = new Create_runner_finishtime(admin);
+            secondWindow.Show();
+        }
+
+
     }
 }
