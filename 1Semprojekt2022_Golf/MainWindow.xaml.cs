@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using _1Semprojekt2022_Golf.View;
 using static _1Semprojekt2022_Golf.Administrator;
 
 namespace _1Semprojekt2022_Golf
@@ -23,6 +25,7 @@ namespace _1Semprojekt2022_Golf
     public partial class MainWindow : Window
     {
         Administrator admin = new Administrator();
+        private List<Zipcode> list = new List<Zipcode>();
 
         public MainWindow()
         {
@@ -34,9 +37,55 @@ namespace _1Semprojekt2022_Golf
         }
         SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
 
+        private void Refresh()
+        {
+            daragrid_deltager.ItemsSource = new ObservableCollection<Zipcode>(list);
+        }
+        private class Zipcode
+        {
+            public string P_id { get; set; }
+            public string P_name { get; set; }
+            public string P_mail { get; set; }
+            public string P_phone { get; set; }
+            public string P_address { get; set; }
+            public string P_zip { get; set; }
+            public string P_city { get; set; }
+        }
+
+        private void Clear()
+        {
+            daragrid_deltager.SelectedIndex = -1;
+            LoadGrid_Runner();
+        }
+
         public void LoadGrid_Runner()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
+            //SqlConnection con = null;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
+            DataTable dt = new DataTable();
+            con.Open();
+            //SqlDataReader sdr = cmd.ExecuteReader();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            list.Clear();
+            while (sdr.Read()) list.Add(new Zipcode { P_id = sdr[0].ToString(), P_name = sdr[1].ToString(), P_mail = sdr[2].ToString(), P_phone = sdr[3].ToString(), P_address = sdr[4].ToString(), P_zip = sdr[5].ToString(), P_city = sdr[6].ToString()});
+            Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+        }
+        private void Btn_Runner_Search_Click(object sender, RoutedEventArgs e)
+        {
+            string runner_id = Search_txt.Text;
+            //SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_id = '" + runner_id + "'", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_name like '%" + runner_id + "%' or P_id like '%" + runner_id + "%'", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -44,7 +93,20 @@ namespace _1Semprojekt2022_Golf
             con.Close();
             daragrid_deltager.ItemsSource = dt.DefaultView;
 
+            if (Search_txt.Text != string.Empty)
+            {
+
+                ClearDataBtn.Visibility = Visibility.Visible;
+                SearchDataBtn.Visibility = Visibility.Hidden;
+            }
+
+
         }
+
+
+
+
+
         public void LoadGrid_Time()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM Route", con);
@@ -178,6 +240,89 @@ namespace _1Semprojekt2022_Golf
         {
             Popup_tes_window secondWindow = new Popup_tes_window();
             secondWindow.Show();
+        }
+
+        private void ClearDataBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Search_txt.Clear();
+            LoadGrid_Runner();
+            LoadGrid_Route();
+            LoadGrid_Time();
+            ClearDataBtn.Visibility = Visibility.Hidden;
+            SearchDataBtn.Visibility = Visibility.Visible;
+
+        }
+
+
+
+
+
+        private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int n = daragrid_deltager.SelectedIndex;
+            if (n >= 0)
+            {
+                //txtCode.Text = list[n].Code;
+                //txtCity.Text = list[n].Cityd;
+            }
+        }
+
+
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message.ToString());
+            }
+            int n = daragrid_deltager.SelectedIndex;
+            if (n >= 0)
+            {
+                string hej = list[n].P_id;
+                ZipWindow win2 = new ZipWindow(hej);
+                win2.Show();
+            }
+        }
+
+        private void btnDelete_Click_2(object sender, RoutedEventArgs e)
+        {
+            //try
+            //{
+            //    DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            //}
+            //catch (Exception ex)
+            //{
+            //    //MessageBox.Show(ex.Message.ToString());
+            //}
+            //string error = "";
+            //string selected_id = list[grid.SelectedIndex].Code;
+            //SqlConnection connection = null;
+            //try
+            //{
+            //    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["post"].ConnectionString);
+            //    SqlCommand command = new SqlCommand("Delete FROM Zipcodes WHERE Code = @Code", connection);
+            //    command.Parameters.Add(CreateParam("@Code", selected_id.Trim(), SqlDbType.NVarChar));
+            //    connection.Open();
+            //    if (command.ExecuteNonQuery() == 1)
+            //    {
+            //        Clear();
+            //        return;
+            //    }
+            //    error = "Illegal database operation";
+            //}
+            //catch (Exception ex)
+            //{
+            //    error = ex.Message;
+            //}
+            //finally
+            //{
+            //    if (connection != null) connection.Close();
+            //}
+            //MessageBox.Show(error);
         }
     }
 }

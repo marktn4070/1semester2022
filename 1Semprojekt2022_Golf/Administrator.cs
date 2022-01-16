@@ -93,6 +93,12 @@ namespace _1Semprojekt2022_Golf
         {
             public static int foo;
         }
+
+
+        public static class Update_id
+        {
+            public static int foo;
+        }
         public static void UpdateRunner(int id) //mangler flere params...
         {
 

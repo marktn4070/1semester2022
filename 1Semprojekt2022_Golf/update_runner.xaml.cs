@@ -41,9 +41,11 @@ namespace _1Semprojekt2022_Golf
             P_zip_txt.Clear();
             P_city_txt.Clear();
             Search_txt.Clear();
+            LoadGrid_Runner();
         }
         public void LoadGrid_Runner()
         {
+
             SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
             DataTable dt = new DataTable();
             con.Open();
@@ -229,16 +231,15 @@ namespace _1Semprojekt2022_Golf
         }
         private void SearchDataBtn_Click(object sender, RoutedEventArgs e)
         {
-            //con.Open();
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_id = " + Search_txt.Text, con);
-
-            //DataTable dt = new DataTable();
-            //con.Open();
-            //SqlDataReader sdr = cmd.ExecuteReader();
-            //dt.Load(sdr);
-            //con.Close();
-            //daragrid.ItemsSource = dt.DefaultView;
-
+            string runner_id = Search_txt.Text;
+            //SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_id = '" + runner_id + "'", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_name like '%" + runner_id + "%' or P_id like '%" + runner_id + "%'", con);
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            con.Close();
+            daragrid.ItemsSource = dt.DefaultView;
 
 
 

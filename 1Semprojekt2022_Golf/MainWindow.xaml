@@ -8,9 +8,9 @@
     <StackPanel>
         <Grid Height="100">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,-0.4,0" Background="#3173C6">
-                <Button Uid="0" Width="150" Content="Deltager" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
-                <Button Uid="1" Width="150" Content="Løberute" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
-                <Button Uid="2" Width="150" Content="Tidstagning" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
+                <Button Uid="0" Width="150" Content="Deltager" Height="50" Background="#3173C6" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
+                <Button Uid="1" Width="150" Content="Løberute" Height="50" Background="#3173C6" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
+                <Button Uid="2" Width="150" Content="Tidstagning" Height="50" Background="#3173C6" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click"/>
 
             </StackPanel>
             <Grid x:Name="GridCursor" Width="150" Height="5" Background="Black" HorizontalAlignment="Left" Margin="0,48,0,47"/>
@@ -42,7 +42,35 @@
 
             <Grid x:Name="page_deltager" Height="500" Background="White" Margin="0,0,-0.4,0">
                 <Button Content="Opret &#xD;&#xA;Deltager" Margin="606,48,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Button_Click_1"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
-                <DataGrid x:Name="daragrid_deltager"  HorizontalAlignment="Left" Width="552" Height="200" Margin="125,139,0,161" />
+                <DataGrid x:Name="daragrid_deltager"  HorizontalAlignment="Left" Width="552" Height="200" Margin="125,139,0,161"   Grid.Row="3" Grid.ColumnSpan="9" AutoGenerateColumns="False" CanUserAddRows="False"
+                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged"  >
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="P_id" Width="80" Binding="{Binding P_id}"/>
+                        <DataGridTextColumn Header="P_name" Width="*" Binding="{Binding P_name}"/>
+                        <DataGridTextColumn Header="P_mail" Width="*" Binding="{Binding P_mail}"/>
+                        <DataGridTextColumn Header="P_phone" Width="*" Binding="{Binding P_phone}"/>
+                        <DataGridTextColumn Header="P_address" Width="*" Binding="{Binding P_address}"/>
+                        <DataGridTextColumn Header="P_zip" Width="*" Binding="{Binding P_zip}"/>
+                        <DataGridTextColumn Header="P_city" Width="*" Binding="{Binding P_city}"/>
+                        <DataGridTemplateColumn Header="View">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="btnView" Content="Update" Click="btnView_Click" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="View2">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="btnDelete" Content="Delete" Click="btnDelete_Click_2" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
                 <Grid x:Name="test_grid" Visibility="Hidden">
                     <TextBox x:Name="P_name_txt" Height="23" Width="100" Margin="75,33,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <TextBox x:Name="P_mail_txt" Height="23" Width="100" Margin="75,89,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
@@ -57,7 +85,13 @@
                     <Label Content="Post nr." Margin="10,253,0,0" Height="30" Width="65" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <Label Content="By" Margin="10,308,0,0" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 </Grid>
-                <Button Content="Test" Margin="125,56,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Test_Click"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Button Content="Test" Margin="491,48,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Test_Click"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+                <TextBox x:Name="Search_txt" Height="31" Width="193" Margin="125,87,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16"/>
+                <Label Content="Id" Margin="102,87,0,0" Height="31" Width="22" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Button Content="x" x:Name="ClearDataBtn" Margin="284,87,0,0" Width="33" Height="31" RenderTransformOrigin="0.504,0.504" Click="ClearDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#fff" FontSize="22" BorderBrush="{x:Null}" Foreground="#FF939393"/>
+                <Button Content="Søg" x:Name="SearchDataBtn" Margin="284,87,0,0" Width="33" Height="31" RenderTransformOrigin="0.504,0.504" Click="Btn_Runner_Search_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
+
             </Grid>
 
 

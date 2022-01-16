@@ -33,7 +33,7 @@
         <TextBlock Text="" x:Name="R_year__error"  Margin="10,293,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         <TextBlock Text="" x:Name="R_navn_error"  Margin="10,146,0,0" Height="25" Width="276" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         
-        <DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="6" Grid.ColumnSpan="4" AutoGenerateColumns="False" CanUserAddRows="False"
+        <DataGrid x:Name="daragrid" Width="552" Height="200" Margin="209,95,0,125"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="5" Grid.ColumnSpan="5" AutoGenerateColumns="False" CanUserAddRows="False"
                   IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged" MouseDoubleClick="grid_MouseDoubleClick" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="80" Binding="{Binding Id}"/>

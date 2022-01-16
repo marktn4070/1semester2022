@@ -27,6 +27,7 @@ namespace _1Semprojekt2022_Golf
             admin = admn;
             InitializeComponent();
             //LoadGrid_Runner();
+            this.Closing += new System.ComponentModel.CancelEventHandler(Create_runner_Closing);
         }
 
 
@@ -51,11 +52,11 @@ namespace _1Semprojekt2022_Golf
         }
 
 
-        //void Create_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        //{
-        //    MainWindow secondWindow = new MainWindow();
-        //    secondWindow.Show();
-        //}
+        void Create_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow secondWindow = new MainWindow();
+            secondWindow.Show();
+        }
         //public void LoadGrid_Runner()
         //{
         //    SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
