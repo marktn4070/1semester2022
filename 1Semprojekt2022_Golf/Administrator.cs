@@ -32,29 +32,6 @@ namespace _1Semprojekt2022_Golf
         }
 
 
-        private static void Print(SqlDataReader reader)
-        {
-            Console.WriteLine();
-            while (reader.Read())
-            {
-                Console.WriteLine("{0} {1}", reader["Code"], reader["City"]);
-                Console.WriteLine();
-            }
-        }
-        public static void ShowRunner()
-        {
-            SqlConnection connection = null;
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-            SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Participant"), connection);
-            DataTable dt = new DataTable();
-            connection.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dt.Load(sdr);
-            Print(sdr);
-            connection.Close();
-
-
-        }
 
         public void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)
         {
@@ -81,20 +58,13 @@ namespace _1Semprojekt2022_Golf
             }
         }
 
-        public static void DeleteRunner(int id)
-        {
-
-        }
         public static class LastIndex
         {
             public static int foo;
         }
 
 
-        public static class Update_id
-        {
-            public static int foo;
-        }
+
         public static void UpdateRunner(int id) //mangler flere params...
         {
 
@@ -114,25 +84,7 @@ namespace _1Semprojekt2022_Golf
                 cmd.ExecuteNonQuery();
                 con.Close();
         }
-        public static void DeleteRoute(string nameOfRoute)
-        {
 
-        }
-
-        public static void ShowRoutes()
-        {
-
-        }
-
-        public static void SearchRoutes(string searchTerm) //måske ikke en string?
-        {
-
-        }
-
-        public static void SearchRunner(string runnerName, int idOfRunner)
-        {
-
-        }
         private static SqlParameter CreateParam(string name, object value, System.Data.SqlDbType type)
         {
             SqlParameter param = new SqlParameter(name, type);
