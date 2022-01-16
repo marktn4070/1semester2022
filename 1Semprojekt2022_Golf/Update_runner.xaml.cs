@@ -1,8 +1,19 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Text.RegularExpressions; // Skal bruges for at kunne bruge Regex
-using System;
 
 namespace _1Semprojekt2022_Golf
 {
@@ -11,18 +22,11 @@ namespace _1Semprojekt2022_Golf
     /// </summary>
     public partial class Update_runner : Window
     {
-        public Update_runner(string P_name_sting, string P_mail_sting, string P_phone_sting, string P_address_sting, string P_zip_sting, string P_city_sting)
+        public Update_runner()
         {
             InitializeComponent();
             LoadGrid_Runner();
-            this.Closing += new System.ComponentModel.CancelEventHandler(Main_Window_runner_open);
-            
-            P_name_txt.Text = P_name_sting;
-            P_mail_txt.Text = P_mail_sting;
-            P_phone_txt.Text = P_phone_sting;
-            P_address_txt.Text = P_address_sting;
-            P_zip_txt.Text = P_zip_sting;
-            P_city_txt.Text = P_city_sting;
+            this.Closing += new System.ComponentModel.CancelEventHandler(Update_runner_Closing);
         }
 
 
@@ -197,11 +201,13 @@ namespace _1Semprojekt2022_Golf
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (Search_txt.Text == "")
             {
+                MessageBox.Show("Id'et skal udfyldes før opdateringen kan ske", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                if (IsValid())
-                {
+            }
+            else
+            {
                     con.Open();
                 SqlCommand cmd = new SqlCommand("update Participant set P_name = '" + P_name_txt.Text + "', P_mail = '" + P_mail_txt.Text + "', P_phone = '" + P_phone_txt.Text + "', P_address = '" + P_address_txt.Text + "', P_zip = '" + P_zip_txt.Text + "', P_city = '" + P_city_txt.Text + "' WHERE P_id = '" + Search_txt.Text + "' ", con);
                 try
@@ -217,30 +223,13 @@ namespace _1Semprojekt2022_Golf
                 {
                     con.Close();
                     clearData();
-
-                    this.Close();
-                    }
+                    LoadGrid_Runner();
 
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        
 
-
-
-
-    }
-
-    void Main_Window_runner_open(object sender, System.ComponentModel.CancelEventArgs e)
-    {
-        MainWindow secondWindow = new MainWindow();
-        secondWindow.Show();
-    }
-
-    private void SearchDataBtn_Click(object sender, RoutedEventArgs e)
+        }
+        private void SearchDataBtn_Click(object sender, RoutedEventArgs e)
         {
             string runner_id = Search_txt.Text;
             //SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_id = '" + runner_id + "'", con);
@@ -260,15 +249,15 @@ namespace _1Semprojekt2022_Golf
 
 
 
+        public void Update_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow secondWindow = new MainWindow();
+            secondWindow.Show();
+        }
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        public static implicit operator Update_runner(Update_route v)
-        {
-            throw new NotImplementedException();
         }
     }
 }
