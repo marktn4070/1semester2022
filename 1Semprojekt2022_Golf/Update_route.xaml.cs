@@ -19,9 +19,42 @@ namespace _1Semprojekt2022_Golf
     /// </summary>
     public partial class Update_route : Window
     {
-        public Update_route(string r_name_sting, string r_year_sting, string r_starttime_sting, string r_distance_sting)
+        public Update_route(string R_name_sting, string R_year_sting, string R_starttime_sting, string R_distance_sting)
         {
             InitializeComponent();
+
+
+            R_name_txt.Text = R_name_sting;
+            R_year_txt.Text = R_year_sting;
+            R_starttime_txt.Text = R_starttime_sting;
+            R_distance_txt.Text = R_distance_sting;
+
+
+        }
+
+        private void CreateBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClearDataBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SearchDataBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
