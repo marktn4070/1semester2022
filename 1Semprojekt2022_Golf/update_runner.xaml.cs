@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Text.RegularExpressions; // Skal bruges for at kunne bruge Regex
+using System;
 
 namespace _1Semprojekt2022_Golf
 {
@@ -22,11 +11,18 @@ namespace _1Semprojekt2022_Golf
     /// </summary>
     public partial class Update_runner : Window
     {
-        public Update_runner()
+        public Update_runner(string P_name_sting, string P_mail_sting, string P_phone_sting, string P_address_sting, string P_zip_sting, string P_city_sting)
         {
             InitializeComponent();
             LoadGrid_Runner();
-            this.Closing += new System.ComponentModel.CancelEventHandler(Update_runner_Closing);
+            this.Closing += new System.ComponentModel.CancelEventHandler(Main_Window_runner_open);
+
+            P_name_txt.Text = P_name_sting;
+            P_mail_txt.Text = P_mail_sting;
+            P_phone_txt.Text = P_phone_sting;
+            P_address_txt.Text = P_address_sting;
+            P_zip_txt.Text = P_zip_sting;
+            P_city_txt.Text = P_city_sting;
         }
 
 
@@ -178,12 +174,12 @@ namespace _1Semprojekt2022_Golf
                 SqlCommand cmd = new SqlCommand("delete from Participant where P_id = " + Search_txt.Text + " ", con);
                 try
                 {
-                    cmd.ExecuteNonQuery(); 
+                    cmd.ExecuteNonQuery();
                     MessageBox.Show("'Id " + Search_txt.Text + "' deltageren er slettet", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
                     con.Close();
                     clearData();
                     LoadGrid_Runner();
-                    con.Close(); 
+                    con.Close();
                 }
                 catch (SqlException ex)
                 {
@@ -192,43 +188,58 @@ namespace _1Semprojekt2022_Golf
                 finally
                 {
                     con.Close();
-                    }
+                }
 
             }
 
         }
-    
+
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Search_txt.Text == "")
+            try
             {
-                MessageBox.Show("Id'et skal udfyldes før opdateringen kan ske", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
 
-            }
-            else
-            {
+                if (IsValid())
+                {
                     con.Open();
-                SqlCommand cmd = new SqlCommand("update Participant set P_name = '" + P_name_txt.Text + "', P_mail = '" + P_mail_txt.Text + "', P_phone = '" + P_phone_txt.Text + "', P_address = '" + P_address_txt.Text + "', P_zip = '" + P_zip_txt.Text + "', P_city = '" + P_city_txt.Text + "' WHERE P_id = '" + Search_txt.Text + "' ", con);
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("'" + P_name_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    con.Close();
-                    clearData();
-                    LoadGrid_Runner();
+                    SqlCommand cmd = new SqlCommand("update Participant set P_name = '" + P_name_txt.Text + "', P_mail = '" + P_mail_txt.Text + "', P_phone = '" + P_phone_txt.Text + "', P_address = '" + P_address_txt.Text + "', P_zip = '" + P_zip_txt.Text + "', P_city = '" + P_city_txt.Text + "' WHERE P_id = '" + Search_txt.Text + "' ", con);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("'" + P_name_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        con.Close();
+                        clearData();
+
+                        this.Close();
+                    }
 
                 }
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
+
 
         }
+
+        void Main_Window_runner_open(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow secondWindow = new MainWindow();
+            secondWindow.Show();
+        }
+
         private void SearchDataBtn_Click(object sender, RoutedEventArgs e)
         {
             string runner_id = Search_txt.Text;
@@ -249,15 +260,15 @@ namespace _1Semprojekt2022_Golf
 
 
 
-        public void Update_runner_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            MainWindow secondWindow = new MainWindow();
-            secondWindow.Show();
-        }
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public static implicit operator Update_runner(Update_route v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
