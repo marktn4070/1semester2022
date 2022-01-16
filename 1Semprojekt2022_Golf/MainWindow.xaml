@@ -82,12 +82,21 @@
 
 
 
-            <Grid x:Name="page_løberute" Height="500" Width="900"  Background="White" d:IsHidden="True">
+            <Grid x:Name="page_løberute" Height="500" Width="900"  Background="White">
 
                 <Button Content="Opret &#xD;&#xA;Ny tid" Margin="705,56,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Button_Click_3"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" Style="{DynamicResource RoundedButtonStyle}" FontWeight="Bold"/>
 
+                <DataGrid x:Name="datagrid_tidstagning"  HorizontalAlignment="Left" Width="650" Height="200" Margin="125,139,0,161" />
 
-                <DataGrid x:Name="datagrid_løberute"  HorizontalAlignment="Left" Width="650" Height="200" Margin="125,139,0,161"   Grid.Row="3" Grid.ColumnSpan="7" AutoGenerateColumns="False" CanUserAddRows="False"
+            </Grid>
+
+
+            <Grid x:Name="page_tidstagning" Height="500" Width="900"  Background="White" d:IsHidden="True">
+                <Button Content="Opret &#xD;&#xA;Løberute" Margin="705,56,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Button_Click_2"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" Style="{DynamicResource RoundedButtonStyle}" FontWeight="Bold"/>
+
+                
+                
+                <DataGrid x:Name="datagrid_løberute"  HorizontalAlignment="Left" Width="650" Height="200" Margin="125,139,0,161" Grid.Row="3" Grid.ColumnSpan="7" AutoGenerateColumns="False" CanUserAddRows="False"
                   IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged"  >
 
                     <DataGrid.Columns>
@@ -115,19 +124,12 @@
                 </DataGrid>
             </Grid>
 
-
-            <Grid x:Name="page_tidstagning" Height="500" Width="900"  Background="White">
-                <Button Content="Opret &#xD;&#xA;Løberute" Margin="705,56,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Button_Click_2"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" Style="{DynamicResource RoundedButtonStyle}" FontWeight="Bold"/>
-
-                <DataGrid x:Name="datagrid_tidstagning"  HorizontalAlignment="Left" Width="650" Height="200" Margin="125,139,0,161" />
-            </Grid>
-
             <Grid x:Name="page_deltager" Height="500" Background="White" Margin="0,0,-0.4,0" d:IsHidden="True">
 
                 <Button Content="Opret &#xD;&#xA;Deltager" Margin="705,56,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Button_Click_1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" Style="{DynamicResource RoundedButtonStyle}" FontWeight="Bold"/>
 
 
-                <DataGrid x:Name="datagrid_deltager"  HorizontalAlignment="Left" Width="650" Height="200" Margin="125,139,0,161"   Grid.Row="3" Grid.ColumnSpan="9" AutoGenerateColumns="False" CanUserAddRows="False"
+                <DataGrid x:Name="datagrid_deltager"  HorizontalAlignment="Left" Width="650" Height="200" Margin="125,139,0,161" Grid.Row="3" Grid.ColumnSpan="9" AutoGenerateColumns="False" CanUserAddRows="False"
                   IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged"  >
 
                     <DataGrid.Columns>
@@ -167,7 +169,7 @@
 
 
 
-            <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Deltager" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
+            <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Deltager" VerticalAlignment="Top" FontSize="30" FontWeight="Bold" d:IsHidden="True"/>
         </Grid>
 
 

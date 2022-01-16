@@ -63,6 +63,10 @@
     <Compile Include="Create_runner.xaml.cs">
       <DependentUpon>Create_runner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Create_runner_finishtime.xaml.cs">
+      <DependentUpon>Create_runner_finishtime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs" />
     <Compile Include="Popup_test.xaml.cs">
       <DependentUpon>Popup_test.xaml</DependentUpon>
     </Compile>
@@ -82,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Create_runner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Create_runner_finishtime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
