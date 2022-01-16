@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,7 +68,6 @@
     <Compile Include="Create_runner_finishtime.xaml.cs">
       <DependentUpon>Create_runner_finishtime.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs" />
     <Compile Include="Popup_test.xaml.cs">
       <DependentUpon>Popup_test.xaml</DependentUpon>
     </Compile>
@@ -74,7 +75,6 @@
       <DependentUpon>Popup_tes_window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Route.cs" />
-    <Compile Include="Runner.cs" />
     <Compile Include="Update_route.xaml.cs">
       <DependentUpon>Update_route.xaml</DependentUpon>
     </Compile>

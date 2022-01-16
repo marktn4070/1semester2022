@@ -28,13 +28,18 @@ namespace _1Semprojekt2022_Golf
             LoadGrid_Time();
             Changed_index();
         }
+
+
         SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+
 
         private void Refresh()
         {
             datagrid_deltager.ItemsSource = new ObservableCollection<Participant_strings>(Participant_list);
             datagrid_løberute.ItemsSource = new ObservableCollection<Route_strings>(Route_list);
         }
+
+
         private class Participant_strings
         {
             public string P_id { get; set; }
@@ -45,6 +50,8 @@ namespace _1Semprojekt2022_Golf
             public string P_zip { get; set; }
             public string P_city { get; set; }
         }
+
+
         private class Route_strings
         {
             public string R_id { get; set; }
@@ -52,18 +59,20 @@ namespace _1Semprojekt2022_Golf
             public string R_year { get; set; }
             public string R_starttime { get; set; }
             public string R_distance { get; set; }
-
         }
+
 
         private void Clear()
         {
             datagrid_deltager.SelectedIndex = -1;
             LoadGrid_Runner();
+            LoadGrid_Route();
+            LoadGrid_Time();
         }
+
 
         public void LoadGrid_Route()
         {
-            //SqlConnection con = null;
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Route", con);
@@ -86,11 +95,8 @@ namespace _1Semprojekt2022_Golf
         }
 
 
-
-
         public void LoadGrid_Runner()
         {
-            //SqlConnection con = null;
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
@@ -110,10 +116,11 @@ namespace _1Semprojekt2022_Golf
                 if (con != null) con.Close();
             }
         }
+
+
         private void Btn_Runner_Search_Click(object sender, RoutedEventArgs e)
         {
             string runner_id = Search_txt.Text;
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_id = '" + runner_id + "'", con);
             SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_name like '%" + runner_id + "%' or P_id like '%" + runner_id + "%'", con);
             DataTable dt = new DataTable();
             con.Open();
@@ -128,12 +135,7 @@ namespace _1Semprojekt2022_Golf
                 ClearDataBtn.Visibility = Visibility.Visible;
                 SearchDataBtn.Visibility = Visibility.Hidden;
             }
-
-
         }
-
-
-
 
 
         public void LoadGrid_Time()
@@ -175,8 +177,9 @@ namespace _1Semprojekt2022_Golf
                     page_løberute.Visibility = Visibility.Hidden;
                     break;
             }
-
         }
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
@@ -210,11 +213,13 @@ namespace _1Semprojekt2022_Golf
             }
         }
 
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Closing += new System.ComponentModel.CancelEventHandler(Create_runner_open);
             this.Close();
         }
+
 
         void Create_runner_open(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -229,16 +234,12 @@ namespace _1Semprojekt2022_Golf
             this.Close();
         }
 
+
         void Create_route_open(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Create_route secondWindow = new Create_route(admin);
             secondWindow.Show();
         }
-
-
-
-
-
 
 
         private void ClearDataBtn_Click(object sender, RoutedEventArgs e)
@@ -249,11 +250,7 @@ namespace _1Semprojekt2022_Golf
             LoadGrid_Time();
             ClearDataBtn.Visibility = Visibility.Hidden;
             SearchDataBtn.Visibility = Visibility.Visible;
-
         }
-
-
-
 
 
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -262,37 +259,29 @@ namespace _1Semprojekt2022_Golf
         }
 
 
-
         private void Route_btnView_Click(object sender, RoutedEventArgs e)
         {
             this.Closing += new System.ComponentModel.CancelEventHandler(Update_route_opdate);
             this.Close();
         }
 
+
         private void Update_route_opdate(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            try
-            {
-                //DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message.ToString());
-            }
             int n = datagrid_løberute.SelectedIndex;
             if (n >= 0)
             {
+                string R_id_string = Route_list[n].R_id;
                 string R_name_sting = Route_list[n].R_name;
                 string R_year_sting = Route_list[n].R_year;
                 string R_starttime_sting = Route_list[n].R_starttime;
                 string R_distance_sting = Route_list[n].R_distance;
-                Update_runner win2 = new Update_route(R_name_sting, R_year_sting, R_starttime_sting, R_distance_sting);
+
+
+                Update_route win2 = new Update_route(R_id_string, R_name_sting, R_year_sting, R_starttime_sting, R_distance_sting);
                 win2.Show();
             }
         }
-
-
-
 
 
         private void btnView_Click(object sender, RoutedEventArgs e)
@@ -301,20 +290,12 @@ namespace _1Semprojekt2022_Golf
             this.Close();
         }
 
+
         private void Update_runner_opdate(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            try
-            {
-                //DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message.ToString());
-            }
             int n = datagrid_deltager.SelectedIndex;
             if (n >= 0)
             {
-
                 string P_name_sting = Participant_list[n].P_name;
                 string P_mail_sting = Participant_list[n].P_mail;
                 string P_phone_sting = Participant_list[n].P_phone;
@@ -325,27 +306,22 @@ namespace _1Semprojekt2022_Golf
                 win2.Show();
             }
         }
+
+
         private SqlParameter CreateParam(string name, object value, SqlDbType type)
         {
             SqlParameter param = new SqlParameter(name, type);
             param.Value = value;
             return param;
         }
+
+
         private void btnDelete_Click_2(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                //DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message.ToString());
-            }
             string error = "";
             string selected_id = Participant_list[datagrid_deltager.SelectedIndex].P_id;
             string selected_name = Participant_list[datagrid_deltager.SelectedIndex].P_name;
             int n = datagrid_deltager.SelectedIndex;
-
 
             var Result = MessageBox.Show("Er du sikker på, at du vil slette '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (Result == MessageBoxResult.Yes)
@@ -353,7 +329,6 @@ namespace _1Semprojekt2022_Golf
                 SqlConnection connection = null;
                 try
                 {
-
                     connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
                     SqlCommand command = new SqlCommand("Delete FROM Participant WHERE P_id = @P_id", connection);
                     command.Parameters.Add(CreateParam("@P_id", selected_id.Trim(), SqlDbType.NVarChar));
@@ -364,7 +339,6 @@ namespace _1Semprojekt2022_Golf
                         return;
                     }
                     error = "Illegal database operation";
-
                 }
                 catch (Exception ex)
                 {
@@ -374,28 +348,25 @@ namespace _1Semprojekt2022_Golf
                 {
                     if (connection != null) connection.Close();
                 }
-
                 MessageBox.Show(error);
-
             }
             else if (Result == MessageBoxResult.No)
             {
                 LoadGrid_Runner();
             }
         }
+
+
         private void Route_btnDelete_Click_2(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                //DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message.ToString());
-            }
             string error = "";
             string selected_id = Route_list[datagrid_løberute.SelectedIndex].R_id;
-            SqlConnection connection = null;
+            string selected_name = Route_list[datagrid_løberute.SelectedIndex].R_name;
+
+            var Result = MessageBox.Show("Er du sikker på, at du vil slette '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (Result == MessageBoxResult.Yes)
+            {
+                SqlConnection connection = null;
             try
             {
                 connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
@@ -418,7 +389,16 @@ namespace _1Semprojekt2022_Golf
                 if (connection != null) connection.Close();
             }
             MessageBox.Show(error);
+            }
+            else if (Result == MessageBoxResult.No)
+            {
+                LoadGrid_Route();
+            }
         }
+
+
+
+
 
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -432,7 +412,5 @@ namespace _1Semprojekt2022_Golf
             Create_runner_finishtime secondWindow = new Create_runner_finishtime(admin);
             secondWindow.Show();
         }
-
-
     }
 }
