@@ -66,11 +66,12 @@ namespace _1Semprojekt2022_Golf
             //SqlConnection con = null;
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Route", con);
                 DataTable dt = new DataTable();
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 Route_list.Clear();
+                
                 while (sdr.Read()) Route_list.Add(new Route_strings { R_id = sdr[0].ToString(), R_name = sdr[1].ToString(), R_year = sdr[2].ToString(), R_starttime = sdr[3].ToString(), R_distance = sdr[4].ToString() });
                 Refresh();
             }
