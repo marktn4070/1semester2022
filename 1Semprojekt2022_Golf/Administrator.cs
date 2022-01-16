@@ -102,8 +102,8 @@ namespace _1Semprojekt2022_Golf
 
         public void AddRoute(string nameOfRoute, int year, int startTimeHour, int startTimeMinute, int distance) 
         {
-            SqlConnection con = null;
-                SqlCommand cmd = new SqlCommand("INSERT INTO Route VALUES (@R_name, @R_year, @R_starttime, @R_distance)", con);
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Route VALUES (@R_name, @R_year, @R_starttime, @R_distance)", con);
                 cmd.CommandType = CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@R_name", nameOfRoute);
