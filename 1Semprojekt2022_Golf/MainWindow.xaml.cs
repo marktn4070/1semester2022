@@ -296,13 +296,14 @@ namespace _1Semprojekt2022_Golf
             int n = datagrid_deltager.SelectedIndex;
             if (n >= 0)
             {
+                string P_id_sting = Participant_list[n].P_id;
                 string P_name_sting = Participant_list[n].P_name;
                 string P_mail_sting = Participant_list[n].P_mail;
                 string P_phone_sting = Participant_list[n].P_phone;
                 string P_address_sting = Participant_list[n].P_address;
                 string P_zip_sting = Participant_list[n].P_zip;
                 string P_city_sting = Participant_list[n].P_city;
-                Update_runner win2 = new Update_runner(P_name_sting, P_mail_sting, P_phone_sting, P_address_sting, P_zip_sting, P_city_sting);
+                Update_runner win2 = new Update_runner(P_id_sting, P_name_sting, P_mail_sting, P_phone_sting, P_address_sting, P_zip_sting, P_city_sting);
                 win2.Show();
             }
         }

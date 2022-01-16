@@ -24,11 +24,13 @@ namespace _1Semprojekt2022_Golf
     public partial class Update_route : Window
     {
         public string R_id_public;
+        public string R_starttime_public;
         public Update_route(string R_id_string, string R_name_sting, string R_year_sting, string R_starttime_sting, string R_distance_sting)
         {
             InitializeComponent();
 
             R_id_public = R_id_string;
+            R_starttime_public = R_starttime_sting;
 
             int R_starttime_int = Int32.Parse(R_starttime_sting);
 
@@ -92,74 +94,74 @@ namespace _1Semprojekt2022_Golf
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            
-            //try
-            //{
 
-            //    if (IsValid())
-            //    {
-            //        con.Open();
-            //        SqlCommand cmd = new SqlCommand("update Route set R_name = '" + R_name_txt.Text + "', R_year = '" + R_year_txt.Text + "', R_starttime = '" + R_starttime_txt.Text + "', R_distance = '" + R_distance_txt.Text + "' WHERE P_id = '" + R_id_public + "' ", con);
-            //        try
-            //        {
-            //            cmd.ExecuteNonQuery();
-            //            MessageBox.Show("'" + R_name_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
-            //        }
-            //        catch (SqlException ex)
-            //        {
-            //            MessageBox.Show(ex.Message);
-            //        }
-            //        finally
-            //        {
-            //            con.Close();
-            //            clearData();
+            try
+            {
 
-            //            this.Close();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (R_name_txt.Text == string.Empty)
-            //        {
-            //            R_navn_error.Text = "Name skal udfyldes";
-            //        }
-            //        else
-            //        {
-            //            R_navn_error.Text = "";
-            //        }
+                if (IsValid())
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("update Route set R_name = '" + R_name_txt.Text + "', R_year = '" + R_year_txt.Text + "', R_starttime = '" + R_starttime_public + "', R_distance = '" + R_distance_txt.Text + "' WHERE R_id = '" + R_id_public + "' ", con);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("'" + R_name_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        con.Close();
+                        clearData();
 
-            //        if (R_year_txt.Text == string.Empty)
-            //        {
-            //            R_year__error.Text = "År skal udfyldes";
-            //        }
-            //        else
-            //        {
-            //            R_year__error.Text = "";
-            //        }
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    if (R_name_txt.Text == string.Empty)
+                    {
+                        R_navn_error.Text = "Name skal udfyldes";
+                    }
+                    else
+                    {
+                        R_navn_error.Text = "";
+                    }
 
-            //        if (R_starttimeHour_txt.Text == string.Empty || R_starttimeMinute_txt.Text == string.Empty)
-            //        {
-            //            R_starttime_error.Text = "Starttid skal udfyldes";
-            //        }
-            //        else
-            //        {
-            //            R_starttime_error.Text = "";
-            //        }
+                    if (R_year_txt.Text == string.Empty)
+                    {
+                        R_year__error.Text = "År skal udfyldes";
+                    }
+                    else
+                    {
+                        R_year__error.Text = "";
+                    }
 
-            //        if (R_distance_txt.Text == string.Empty)
-            //        {
-            //            R_distance_error.Text = "Længde skal udfyldes";
-            //        }
-            //        else
-            //        {
-            //            R_distance_error.Text = "";
-            //        }
-            //    }
-            //}
-            //catch (SqlException ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+                    if (R_starttimeHour_txt.Text == string.Empty || R_starttimeMinute_txt.Text == string.Empty)
+                    {
+                        R_starttime_error.Text = "Starttid skal udfyldes";
+                    }
+                    else
+                    {
+                        R_starttime_error.Text = "";
+                    }
+
+                    if (R_distance_txt.Text == string.Empty)
+                    {
+                        R_distance_error.Text = "Længde skal udfyldes";
+                    }
+                    else
+                    {
+                        R_distance_error.Text = "";
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
