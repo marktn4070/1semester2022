@@ -11,12 +11,14 @@ namespace _1Semprojekt2022_Golf
     /// </summary>
     public partial class Update_runner : Window
     {
-        public Update_runner(string P_name_sting, string P_mail_sting, string P_phone_sting, string P_address_sting, string P_zip_sting, string P_city_sting)
+        public string P_id_public;
+        public Update_runner(string P_id_sting, string P_name_sting, string P_mail_sting, string P_phone_sting, string P_address_sting, string P_zip_sting, string P_city_sting)
         {
             InitializeComponent();
             LoadGrid_Runner();
             this.Closing += new System.ComponentModel.CancelEventHandler(Main_Window_runner_open);
 
+            P_id_public = P_id_sting;
             P_name_txt.Text = P_name_sting;
             P_mail_txt.Text = P_mail_sting;
             P_phone_txt.Text = P_phone_sting;
@@ -36,7 +38,7 @@ namespace _1Semprojekt2022_Golf
             P_address_txt.Clear();
             P_zip_txt.Clear();
             P_city_txt.Clear();
-            Search_txt.Clear();
+            //Search_txt.Clear();
             LoadGrid_Runner();
         }
         public void LoadGrid_Runner()
@@ -71,7 +73,7 @@ namespace _1Semprojekt2022_Golf
                 return false;
             }
 
-            ///Email feltet
+            // Email feltet
             if (P_mail_txt.Text == string.Empty)
             {
                 MessageBox.Show("E-mail skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -83,7 +85,7 @@ namespace _1Semprojekt2022_Golf
                 return false;
             }
 
-            //Telefonnummer feltet
+            // Telefonnummer feltet
             if (P_phone_txt.Text == string.Empty)
             {
                 MessageBox.Show("Telefon nr. skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -96,7 +98,7 @@ namespace _1Semprojekt2022_Golf
                 return false;
             }
 
-            //Adresse feltet
+            // Adresse feltet
             if (P_address_txt.Text == string.Empty)
             {
                 MessageBox.Show("Addresse skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -108,7 +110,7 @@ namespace _1Semprojekt2022_Golf
                 return false;
             }
 
-            //Postnummer feltet
+            // Postnummer feltet
             if (P_zip_txt.Text == string.Empty)
             {
                 MessageBox.Show("Post nr. skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -120,7 +122,7 @@ namespace _1Semprojekt2022_Golf
                 return false;
             }
 
-            //By feltet
+            // By feltet
             if (P_city_txt.Text == string.Empty)
             {
                 MessageBox.Show("Name is required", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -208,7 +210,7 @@ namespace _1Semprojekt2022_Golf
                 if (IsValid())
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("update Participant set P_name = '" + P_name_txt.Text + "', P_mail = '" + P_mail_txt.Text + "', P_phone = '" + P_phone_txt.Text + "', P_address = '" + P_address_txt.Text + "', P_zip = '" + P_zip_txt.Text + "', P_city = '" + P_city_txt.Text + "' WHERE P_id = '" + Search_txt.Text + "' ", con);
+                    SqlCommand cmd = new SqlCommand("update Participant set P_name = '" + P_name_txt.Text + "', P_mail = '" + P_mail_txt.Text + "', P_phone = '" + P_phone_txt.Text + "', P_address = '" + P_address_txt.Text + "', P_zip = '" + P_zip_txt.Text + "', P_city = '" + P_city_txt.Text + "' WHERE P_id = '" + P_id_public + "' ", con);
                     try
                     {
                         cmd.ExecuteNonQuery();
