@@ -6,6 +6,8 @@ using System.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Configuration;
+using System.Text.RegularExpressions;
+
 
 namespace _1Semprojekt2022_Golf
 {
@@ -85,6 +87,10 @@ namespace _1Semprojekt2022_Golf
                     {
                         R_navn_error.Text = "Name skal udfyldes";
                     }
+                    else if (Regex.IsMatch(R_name_txt.Text, "[^æøåÆØÅa-zA-Z ]"))
+                    {
+                        R_navn_error.Text = "Name skal stå med bogstaver";
+                    }
                     else
                     {
                         R_navn_error.Text = "";
@@ -93,6 +99,10 @@ namespace _1Semprojekt2022_Golf
                     if (R_year_txt.Text == string.Empty)
                     {
                         R_year__error.Text = "År skal udfyldes";
+                    }
+                    else if (Regex.IsMatch(R_year__error.Text, "[^0-9]"))
+                    {
+                        R_year__error.Text = "År skal stå med tal";
                     }
                     else
                     {
@@ -103,19 +113,25 @@ namespace _1Semprojekt2022_Golf
                     {
                         R_starttime_error.Text = "Starttid skal udfyldes";
                     }
-                    else
+                    else if (Regex.IsMatch(R_year__error.Text, "[^0-9]"))
                     {
+                        R_year__error.Text = "Starttid skal stå med tal";
+                    }
+                    else
                         R_starttime_error.Text = "";
-                    }
+                }
 
-                    if (R_distance_txt.Text == string.Empty)
-                    {
-                        R_distance_error.Text = "Længde skal udfyldes";
-                    }
-                    else
-                    {
-                        R_distance_error.Text = "";
-                    }
+                if (R_distance_txt.Text == string.Empty)
+                {
+                    R_distance_error.Text = "Længde skal udfyldes";
+                }
+                else if (Regex.IsMatch(R_year__error.Text, "[^0-9]"))
+                {
+                    R_year__error.Text = "Længde skal stå med tal";
+                }
+                else
+                {
+                    R_distance_error.Text = "";
                 }
             }
             catch (SqlException ex)

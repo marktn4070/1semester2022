@@ -15,7 +15,6 @@ namespace _1Semprojekt2022_Golf
         public Update_runner(string P_id_sting, string P_name_sting, string P_mail_sting, string P_phone_sting, string P_address_sting, string P_zip_sting, string P_city_sting)
         {
             InitializeComponent();
-            LoadGrid_Runner();
             this.Closing += new System.ComponentModel.CancelEventHandler(Main_Window_runner_open);
 
             P_id_public = P_id_sting;
@@ -38,21 +37,8 @@ namespace _1Semprojekt2022_Golf
             P_address_txt.Clear();
             P_zip_txt.Clear();
             P_city_txt.Clear();
-            //Search_txt.Clear();
-            LoadGrid_Runner();
         }
-        public void LoadGrid_Runner()
-        {
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
-            DataTable dt = new DataTable();
-            con.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dt.Load(sdr);
-            con.Close();
-            daragrid.ItemsSource = dt.DefaultView;
-
-        }
 
         private void ClearDataBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -104,11 +90,6 @@ namespace _1Semprojekt2022_Golf
                 MessageBox.Show("Addresse skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            else if (Regex.IsMatch(P_address_txt.Text, "[^ÆØÅæøåa-zA-Z 0-9]"))
-            {
-                MessageBox.Show("Vær venligst at kun indtaste tal og bogstaver ved 'Adresse'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
 
             // Postnummer feltet
             if (P_zip_txt.Text == string.Empty)
@@ -135,70 +116,6 @@ namespace _1Semprojekt2022_Golf
             }
 
             return true;
-        }
-
-        private void CreateBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-                if (IsValid())
-                {
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Participant VALUES (@P_name, @P_mail, @P_phone, @P_address, @P_zip, @P_city)", con);
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@P_name", P_name_txt.Text);
-                    cmd.Parameters.AddWithValue("@P_mail", P_mail_txt.Text);
-                    cmd.Parameters.Add("@P_phone", SqlDbType.Int).Value = P_phone_txt.Text;
-                    cmd.Parameters.AddWithValue("@P_address", P_address_txt.Text);
-                    cmd.Parameters.Add("@P_zip", SqlDbType.Int).Value = P_zip_txt.Text;
-                    cmd.Parameters.AddWithValue("@P_city", P_city_txt.Text);
-                    string P_name = P_name_txt.Text;
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    LoadGrid_Runner();
-                    MessageBox.Show("'" + P_name + "' er nu oprettet", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
-                    clearData();
-
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (Search_txt.Text == "")
-            {
-                MessageBox.Show("Id'et skal udfyldes før sletningen kan ske", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-
-            }
-            else
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("delete from Participant where P_id = " + Search_txt.Text + " ", con);
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("'Id " + Search_txt.Text + "' deltageren er slettet", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
-                    con.Close();
-                    clearData();
-                    LoadGrid_Runner();
-                    con.Close();
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Deltageren blev ikke slettet: " + ex.Message);
-                }
-                finally
-                {
-                    con.Close();
-                }
-
-            }
-
         }
 
 
@@ -247,31 +164,8 @@ namespace _1Semprojekt2022_Golf
             secondWindow.Show();
         }
 
-        private void SearchDataBtn_Click(object sender, RoutedEventArgs e)
-        {
-            string runner_id = Search_txt.Text;
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_id = '" + runner_id + "'", con);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_name like '%" + runner_id + "%' or P_id like '%" + runner_id + "%'", con);
-            DataTable dt = new DataTable();
-            con.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dt.Load(sdr);
-            con.Close();
-            daragrid.ItemsSource = dt.DefaultView;
 
 
-
-        }
-
-
-
-
-
-
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
 
     }
 }

@@ -65,11 +65,6 @@ namespace _1Semprojekt2022_Golf
                 MessageBox.Show("Addresse skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            else if (Regex.IsMatch(Address.Text, "[^ÆØÅæøåa-zA-Z 0-9]"))
-            {
-                MessageBox.Show("Vær venligst at kun indtaste tal og bogstaver ved 'Adresse'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
 
             // Postnummer feltet
             if (Zip.Text == string.Empty)
@@ -89,7 +84,7 @@ namespace _1Semprojekt2022_Golf
                 MessageBox.Show("Name is required", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            else if (Regex.IsMatch(City.Text, "[^ÆØÅæøåa-zA-Z]"))
+            else if (Regex.IsMatch(City.Text, @"[^ÆØÅæøåa-zA-Z^\s]"))
             {
                 MessageBox.Show("Vær venligst at indtaste bogstaver ved 'By'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;

@@ -65,15 +65,6 @@
     <Compile Include="Create_runner.xaml.cs">
       <DependentUpon>Create_runner.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Create_runner_finishtime.xaml.cs">
-      <DependentUpon>Create_runner_finishtime.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popup_test.xaml.cs">
-      <DependentUpon>Popup_test.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popup_tes_window.xaml.cs">
-      <DependentUpon>Popup_tes_window.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Route.cs" />
     <Compile Include="Update_route.xaml.cs">
       <DependentUpon>Update_route.xaml</DependentUpon>
@@ -86,10 +77,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Create_runner.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Create_runner_finishtime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,14 +93,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Popup_test.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Popup_tes_window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Update_route.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
