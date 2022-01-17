@@ -77,6 +77,11 @@ namespace _1Semprojekt2022_Golf
                 MessageBox.Show("E-mail skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
+            else if (Regex.IsMatch(P_name_txt.Text, "[^æ^[a-zA-Z][w.-]*[a-zA-Z0-9]@[a-zA-Z0-9][w.-]*[a-zA-Z0-9].[a-zA-Z][a-zA-Z.]*[a-zA-Z]$"))
+            {
+                MessageBox.Show("Vær venligst at indtaste en valid ved 'Navn'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
 
             //Telefonnummer feltet
             if (P_phone_txt.Text == string.Empty)
@@ -254,21 +259,6 @@ namespace _1Semprojekt2022_Golf
 
 
 
-        }
-
-
-
-
-
-
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        public static implicit operator Update_runner(Update_route v)
-        {
-            throw new NotImplementedException();
         }
     }
 }
