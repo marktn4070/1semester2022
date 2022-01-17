@@ -119,7 +119,7 @@ namespace _1Semprojekt2022_Golf
             }
         }
 
-        private void Clear()
+        private void Clear() ///James
         {
             Name.Clear();
             Mail.Clear();

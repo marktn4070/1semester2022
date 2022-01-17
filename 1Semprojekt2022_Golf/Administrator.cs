@@ -33,7 +33,7 @@ namespace _1Semprojekt2022_Golf
 
 
 
-        public void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city)
+        public void MakeNewRunner(string name, string mail, int phone, string address, int zip, string city) ///James
         {
             SqlConnection connection = null;
 
@@ -70,7 +70,7 @@ namespace _1Semprojekt2022_Golf
 
         }
 
-        public void AddRoute(string nameOfRoute, int year, int startTimeHour, int startTimeMinute, int distance) 
+        public void AddRoute(string nameOfRoute, int year, int startTimeHour, int startTimeMinute, int distance)  ///James
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
             SqlCommand cmd = new SqlCommand("INSERT INTO Route VALUES (@R_name, @R_year, @R_starttime, @R_distance)", con);
