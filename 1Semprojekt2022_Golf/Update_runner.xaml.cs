@@ -65,9 +65,9 @@ namespace _1Semprojekt2022_Golf
                 MessageBox.Show("E-mail skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            else if (Regex.IsMatch(P_name_txt.Text, "[^æ^[a-zA-Z][w.-]*[a-zA-Z0-9]@[a-zA-Z0-9][w.-]*[a-zA-Z0-9].[a-zA-Z][a-zA-Z.]*[a-zA-Z]$"))
+            else if (!Regex.IsMatch(P_mail_txt.Text, @"^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$"))
             {
-                MessageBox.Show("Vær venligst at indtaste en valid ved 'Navn'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Vær venligst at indtaste en korrekt e-mail adresse", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
@@ -164,19 +164,8 @@ namespace _1Semprojekt2022_Golf
             secondWindow.Show();
         }
 
-        private void SearchDataBtn_Click(object sender, RoutedEventArgs e)
-        {
-            string runner_id = Search_txt.Text;
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_id = '" + runner_id + "'", con);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_name like '%" + runner_id + "%' or P_id like '%" + runner_id + "%'", con);
-            DataTable dt = new DataTable();
-            con.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dt.Load(sdr);
-            con.Close();
-            datagrid.ItemsSource = dt.DefaultView;
 
 
-        }
+
     }
 }
