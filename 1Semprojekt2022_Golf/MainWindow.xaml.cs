@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Collections.ObjectModel;
 using static _1Semprojekt2022_Golf.Administrator;
 using System.Configuration;
-
+using System.Windows.Media;
 
 namespace _1Semprojekt2022_Golf
 {
@@ -120,6 +120,9 @@ namespace _1Semprojekt2022_Golf
 
         private void Btn_Runner_Search_Click(object sender, RoutedEventArgs e)
         {
+            if (Search_txt.Text != string.Empty)
+            {
+
             string runner_id = Search_txt.Text;
             SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_name like '%" + runner_id + "%' or P_id like '%" + runner_id + "%'", con);
             DataTable dt = new DataTable();
@@ -128,13 +131,32 @@ namespace _1Semprojekt2022_Golf
             dt.Load(sdr);
             con.Close();
             datagrid_deltager.ItemsSource = dt.DefaultView;
+            Search_txt.Background  = Brushes.Transparent;
+            string runner_txt = Search_txt.Text;
+                Search_txt.Text = "";
 
-            if (Search_txt.Text != string.Empty)
+                int Search_items = datagrid_deltager.Items.Count;
+
+            if (Search_items == 0)
             {
+                Search_message.Content = "Der er ingen resultater på din søgningen";
+            }
+            else if (Search_items == 1)
+            {
+                Search_message.Content = Search_items + " resultat på søgningen af '" + runner_txt + "'";
+            }
+            else
+            {
+                Search_message.Content = Search_items + " resultater på søgningen af '" + runner_txt + "'";
+            }
+
+
 
                 ClearDataBtn.Visibility = Visibility.Visible;
                 SearchDataBtn.Visibility = Visibility.Hidden;
+
             }
+
         }
 
 
@@ -250,6 +272,7 @@ namespace _1Semprojekt2022_Golf
             LoadGrid_Time();
             ClearDataBtn.Visibility = Visibility.Hidden;
             SearchDataBtn.Visibility = Visibility.Visible;
+            Search_txt.Background = (Brush)new BrushConverter().ConvertFrom("#fff");
         }
 
 
@@ -324,7 +347,7 @@ namespace _1Semprojekt2022_Golf
             string selected_name = Participant_list[datagrid_deltager.SelectedIndex].P_name;
             int n = datagrid_deltager.SelectedIndex;
 
-            var Result = MessageBox.Show("Er du sikker på, at du vil slette '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (Result == MessageBoxResult.Yes)
             {
                 SqlConnection connection = null;
@@ -364,7 +387,7 @@ namespace _1Semprojekt2022_Golf
             string selected_id = Route_list[datagrid_løberute.SelectedIndex].R_id;
             string selected_name = Route_list[datagrid_løberute.SelectedIndex].R_name;
 
-            var Result = MessageBox.Show("Er du sikker på, at du vil slette '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            var Result = MessageBox.Show("Er du sikker på, at du vil slette ruten '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (Result == MessageBoxResult.Yes)
             {
                 SqlConnection connection = null;
@@ -402,16 +425,19 @@ namespace _1Semprojekt2022_Golf
 
 
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            this.Closing += new System.ComponentModel.CancelEventHandler(Create_runner_finishtime_open);
-            this.Close();
-        }
 
-        void Create_runner_finishtime_open(object sender, System.ComponentModel.CancelEventArgs e)
+
+        private void Search_txt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Create_runner_finishtime secondWindow = new Create_runner_finishtime(admin);
-            secondWindow.Show();
+            //Search_txt.Text = "";
+            if (Search_txt.Text != "" )
+            {
+                Search_txt.Background = (Brush)new BrushConverter().ConvertFrom("#fff");
+
+
+                ClearDataBtn.Visibility = Visibility.Hidden;
+                SearchDataBtn.Visibility = Visibility.Visible;
+            }
         }
     }
 }

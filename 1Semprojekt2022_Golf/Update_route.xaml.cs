@@ -72,6 +72,9 @@ namespace _1Semprojekt2022_Golf
 
         }
 
+
+
+
         public void clearData()
         {
             R_name_txt.Clear();
@@ -80,6 +83,7 @@ namespace _1Semprojekt2022_Golf
             R_starttimeMinute_txt.Clear();
             R_distance_txt.Clear();
         }
+
         public bool IsValid()
         {
             if (R_name_txt.Text == string.Empty || R_year_txt.Text == string.Empty || R_starttimeHour_txt.Text == string.Empty || R_starttimeMinute_txt.Text == string.Empty || R_distance_txt.Text == string.Empty)
@@ -101,7 +105,13 @@ namespace _1Semprojekt2022_Golf
                 if (IsValid())
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("update Route set R_name = '" + R_name_txt.Text + "', R_year = '" + R_year_txt.Text + "', R_starttime = '" + R_starttime_public + "', R_distance = '" + R_distance_txt.Text + "' WHERE R_id = '" + R_id_public + "' ", con);
+
+                    int R_starttimeHour_int = Int32.Parse(R_starttimeHour_txt.Text);
+                    int R_starttimeMinute_int = Int32.Parse(R_starttimeMinute_txt.Text);
+
+                    int R_starttime = R_starttimeHour_int * 60 * 60 + R_starttimeMinute_int * 60;
+
+                    SqlCommand cmd = new SqlCommand("update Route set R_name = '" + R_name_txt.Text + "', R_year = '" + R_year_txt.Text + "', R_starttime = '" + R_starttime + "', R_distance = '" + R_distance_txt.Text + "' WHERE R_id = '" + R_id_public + "' ", con);
                     try
                     {
                         cmd.ExecuteNonQuery();
@@ -170,7 +180,7 @@ namespace _1Semprojekt2022_Golf
 
         private void ClearDataBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            clearData();
         }
 
         private void SearchDataBtn_Click(object sender, RoutedEventArgs e)
