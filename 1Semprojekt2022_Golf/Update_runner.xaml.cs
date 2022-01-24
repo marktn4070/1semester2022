@@ -174,8 +174,7 @@ namespace _1Semprojekt2022_Golf
             SqlDataReader sdr = cmd.ExecuteReader();
             dt.Load(sdr);
             con.Close();
-            daragrid.ItemsSource = dt.DefaultView;
-
+            datagrid.ItemsSource = dt.DefaultView;
 
 
         }
