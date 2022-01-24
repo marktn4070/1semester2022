@@ -7,7 +7,7 @@ using System;
 namespace _1Semprojekt2022_Golf
 {
     /// <summary>
-    /// Interaction logic for Update_runner.xaml
+    /// ///Mark
     /// </summary>
     public partial class Update_runner : Window
     {

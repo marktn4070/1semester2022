@@ -5,7 +5,7 @@ using System.Windows;
 namespace _1Semprojekt2022_Golf
 {
     /// <summary>
-    /// Interaction logic for Create_runner.xaml
+    /// ///Mark
     /// </summary>
     public partial class Create_runner : Window
     {
