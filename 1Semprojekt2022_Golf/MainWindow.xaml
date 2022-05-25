@@ -65,7 +65,7 @@
     <StackPanel>
 
 
-        <Grid Height="100" d:IsLocked="True">
+        <Grid Name="Menu" Height="100" d:IsLocked="True">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,-0.4,0" Background="#3173C6">
 
                 <Button Uid="0" Width="150" Content="Deltager" Height="50" Background="#3173C6" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click" FontWeight="Bold"/>

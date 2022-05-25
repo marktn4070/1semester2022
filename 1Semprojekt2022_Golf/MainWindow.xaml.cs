@@ -30,8 +30,9 @@ namespace _1Semprojekt2022_Golf
         }
 
 
-        SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+        //SqlConnection data = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
 
+        SqlConnection data = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
 
         private void Refresh()
         {
@@ -75,12 +76,12 @@ namespace _1Semprojekt2022_Golf
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Route", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Route", data);
                 DataTable dt = new DataTable();
-                con.Open();
+                data.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 Route_list.Clear();
-                
+
                 while (sdr.Read()) Route_list.Add(new Route_strings { R_id = sdr[0].ToString(), R_name = sdr[1].ToString(), R_year = sdr[2].ToString(), R_starttime = sdr[3].ToString(), R_distance = sdr[4].ToString() });
                 Refresh();
             }
@@ -90,7 +91,7 @@ namespace _1Semprojekt2022_Golf
             }
             finally
             {
-                if (con != null) con.Close();
+                if (data != null) data.Close();
             }
         }
 
@@ -99,9 +100,9 @@ namespace _1Semprojekt2022_Golf
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", data);
                 DataTable dt = new DataTable();
-                con.Open();
+                data.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 Participant_list.Clear();
                 while (sdr.Read()) Participant_list.Add(new Participant_strings { P_id = sdr[0].ToString(), P_name = sdr[1].ToString(), P_mail = sdr[2].ToString(), P_phone = sdr[3].ToString(), P_address = sdr[4].ToString(), P_zip = sdr[5].ToString(), P_city = sdr[6].ToString() });
@@ -113,7 +114,7 @@ namespace _1Semprojekt2022_Golf
             }
             finally
             {
-                if (con != null) con.Close();
+                if (data != null) data.Close();
             }
         }
 
@@ -123,32 +124,32 @@ namespace _1Semprojekt2022_Golf
             if (Search_txt.Text != string.Empty)
             {
 
-            string runner_id = Search_txt.Text;
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_name like '%" + runner_id + "%' or P_id like '%" + runner_id + "%'", con);
-            DataTable dt = new DataTable();
-            con.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dt.Load(sdr);
-            con.Close();
-            datagrid_deltager.ItemsSource = dt.DefaultView;
-            Search_txt.Background  = Brushes.Transparent;
-            string runner_txt = Search_txt.Text;
+                string runner_id = Search_txt.Text;
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_name like '%" + runner_id + "%' or P_id like '%" + runner_id + "%'", data);
+                DataTable dt = new DataTable();
+                data.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                dt.Load(sdr);
+                data.Close();
+                datagrid_deltager.ItemsSource = dt.DefaultView;
+                Search_txt.Background = Brushes.Transparent;
+                string runner_txt = Search_txt.Text;
                 Search_txt.Text = "";
 
                 int Search_items = datagrid_deltager.Items.Count;
 
-            if (Search_items == 0)
-            {
-                Search_message.Content = "Der er ingen resultater på din søgningen";
-            }
-            else if (Search_items == 1)
-            {
-                Search_message.Content = Search_items + " resultat på søgningen af '" + runner_txt + "'";
-            }
-            else
-            {
-                Search_message.Content = Search_items + " resultater på søgningen af '" + runner_txt + "'";
-            }
+                if (Search_items == 0)
+                {
+                    Search_message.Content = "Der er ingen resultater på din søgningen";
+                }
+                else if (Search_items == 1)
+                {
+                    Search_message.Content = Search_items + " resultat på søgningen af '" + runner_txt + "'";
+                }
+                else
+                {
+                    Search_message.Content = Search_items + " resultater på søgningen af '" + runner_txt + "'";
+                }
 
 
 
@@ -162,12 +163,12 @@ namespace _1Semprojekt2022_Golf
 
         public void LoadGrid_Time()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Registered", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Registered", data);
             DataTable dt = new DataTable();
-            con.Open();
+            data.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
             dt.Load(sdr);
-            con.Close();
+            data.Close();
             datagrid_tidstagning.ItemsSource = dt.DefaultView;
         }
 
@@ -391,28 +392,28 @@ namespace _1Semprojekt2022_Golf
             if (Result == MessageBoxResult.Yes)
             {
                 SqlConnection connection = null;
-            try
-            {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-                SqlCommand command = new SqlCommand("Delete FROM Route WHERE R_id = @R_id", connection);
-                command.Parameters.Add(CreateParam("@R_id", selected_id.Trim(), SqlDbType.NVarChar));
-                connection.Open();
-                if (command.ExecuteNonQuery() == 1)
+                try
                 {
-                    Clear();
-                    return;
+                    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+                    SqlCommand command = new SqlCommand("Delete FROM Route WHERE R_id = @R_id", connection);
+                    command.Parameters.Add(CreateParam("@R_id", selected_id.Trim(), SqlDbType.NVarChar));
+                    connection.Open();
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        Clear();
+                        return;
+                    }
+                    error = "Illegal database operation";
                 }
-                error = "Illegal database operation";
-            }
-            catch (Exception ex)
-            {
-                error = ex.Message;
-            }
-            finally
-            {
-                if (connection != null) connection.Close();
-            }
-            MessageBox.Show(error);
+                catch (Exception ex)
+                {
+                    error = ex.Message;
+                }
+                finally
+                {
+                    if (connection != null) connection.Close();
+                }
+                MessageBox.Show(error);
             }
             else if (Result == MessageBoxResult.No)
             {
@@ -430,7 +431,7 @@ namespace _1Semprojekt2022_Golf
         private void Search_txt_TextChanged(object sender, TextChangedEventArgs e)
         {
             //Search_txt.Text = "";
-            if (Search_txt.Text != "" )
+            if (Search_txt.Text != "")
             {
                 Search_txt.Background = (Brush)new BrushConverter().ConvertFrom("#fff");
 
